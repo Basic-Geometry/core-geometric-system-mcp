@@ -4,7 +4,13 @@ import { createServer } from "@modelcontextprotocol/sdk/server";
 import { z } from "zod";
 
 // Import your existing calculator logic.
-import { circleArea, 
+import { sin,
+        cos,
+        tan,
+        Asin,
+        Acos,
+        Atan,
+        circleArea, 
         circumference,
         segmentAreaFromHeightAndRadius,
         segmentAreaFromHeightAndChord,
@@ -32,10 +38,9 @@ server.tool(
     radius: z.number()
   },
   async ({ radius }) => {
-    // Call your existing logic
+    
     const result = circleArea(radius);
 
-    // Return structured output
     return {
       circle_area: result.circleArea
     };
@@ -49,10 +54,9 @@ server.tool(
     radius: z.number()
   },
   async ({ radius }) => {
-    // Call your existing logic
+    
     const result = circumference(radius);
 
-    // Return structured output
   return { ...result };
     };
   }
@@ -70,7 +74,6 @@ server.tool(
   async ({ radius, height }) => {
     const result = segmentAreaFromHeightAndRadius(radius, height);
     
-    // Return structured output
     return { ...result };
   }
 );
@@ -85,7 +88,6 @@ server.tool(
   async ({ chordLength, height }) => {
     const result = segmentAreaFromHeightAndChord(height, chordLength);
     
-    // Return structured output
     return { ...result };
   }
 );
@@ -100,7 +102,6 @@ server.tool(
   async ({ radius, chordLength }) => {
     const result = segmentAreaFromChordAndRadius(radius, chordLength);
    
-    // Return structured output
     return { ...result };
   }
 );
@@ -113,10 +114,9 @@ server.tool(
     height: z.number()
   },
   async ({ chordLength, height }) => {
-    // Call your existing logic
+    
     const result = segmentArea(chordLength, height);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -130,10 +130,9 @@ server.tool(
     chordLength: z.number()
   },
   async ({ radius, chordLength }) => {
-    // Call your existing logic
+    
     const result = segmentArea(radius, chordLength);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -147,10 +146,9 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    // Call your existing logic
+    
     const result = coneSurface(radius, height);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -163,10 +161,9 @@ server.tool(
     radius: z.number()
   },
   async ({ radius }) => {
-    // Call your existing logic
+    
     const result = sphereVolume(radius);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -180,10 +177,9 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    // Call your existing logic
+    
     const result = capVolume(radius, height);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -197,10 +193,9 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    // Call your existing logic
+    
     const result = coneVolume(radius, height);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -215,10 +210,9 @@ server.tool(
     height: z.number()
   },
   async ({ number, baseLength, height }) => {
-    // Call your existing logic
+    
     const result = pyramidVolume(number, baseLength, height);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -234,10 +228,9 @@ server.tool(
     height: z.number()
   },
   async ({ number, baseLength, topLength, height }) => {
-    // Call your existing logic
+    
     const result = frustumPyramidVolume(number, baseLength, topLength, height);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -253,10 +246,9 @@ server.tool(
     height: z.number()
   },
   async ({ number, baseRadius, topRadius, height }) => {
-    // Call your existing logic
+    
     const result = frustumConeVolume(number, baseRadius, topRadius, height);
 
-    // Return structured output
     return { ...result };
     };
   }
@@ -269,10 +261,9 @@ server.tool(
     edge: z.number()
   },
   async ({ edge }) => {
-    // Call your existing logic
+   
     const result = tetrahedronVolume(edge);
 
-    // Return structured output
    return { ...result };
     };
   }
