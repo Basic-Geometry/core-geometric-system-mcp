@@ -41,9 +41,7 @@ server.tool(
     
     const result = circleArea(radius);
 
-    return {
-      circle_area: result.circleArea
-    };
+    return { ...result };
   }
 );
 
@@ -58,7 +56,6 @@ server.tool(
     const result = circumference(radius);
 
   return { ...result };
-    };
   }
 );
 
@@ -106,37 +103,6 @@ server.tool(
   }
 );
 
-// Register the circle segment tool
-server.tool(
-  "compute_circle_segment_area_from_height_and_chord_length",
-  {
-    chordLength: z.number(),
-    height: z.number()
-  },
-  async ({ chordLength, height }) => {
-    
-    const result = segmentArea(chordLength, height);
-
-    return { ...result };
-    };
-  }
-);
-
-// Register the circle segment tool
-server.tool(
-  "compute_circle_segment_area_from_chord_length_and_parent_circle_radius",
-  {
-    radius: z.number(),
-    chordLength: z.number()
-  },
-  async ({ radius, chordLength }) => {
-    
-    const result = segmentArea(radius, chordLength);
-
-    return { ...result };
-    };
-  }
-);
 
 // Register the cone surface area tool
 server.tool(
@@ -150,7 +116,6 @@ server.tool(
     const result = coneSurface(radius, height);
 
     return { ...result };
-    };
   }
 );
 
@@ -165,7 +130,6 @@ server.tool(
     const result = sphereVolume(radius);
 
     return { ...result };
-    };
   }
 );
 
@@ -181,7 +145,6 @@ server.tool(
     const result = capVolume(radius, height);
 
     return { ...result };
-    };
   }
 );
 
@@ -197,7 +160,6 @@ server.tool(
     const result = coneVolume(radius, height);
 
     return { ...result };
-    };
   }
 );
 
@@ -214,7 +176,6 @@ server.tool(
     const result = pyramidVolume(number, baseLength, height);
 
     return { ...result };
-    };
   }
 );
 
@@ -232,7 +193,6 @@ server.tool(
     const result = frustumPyramidVolume(number, baseLength, topLength, height);
 
     return { ...result };
-    };
   }
 );
 
@@ -240,17 +200,15 @@ server.tool(
 server.tool(
   "compute_frustum_cone_volume",
   {
-    number: z.number(),
     baseRadius: z.number(),
     topRadius: z.number(),
     height: z.number()
   },
-  async ({ number, baseRadius, topRadius, height }) => {
+  async ({ baseRadius, topRadius, height }) => {
     
-    const result = frustumConeVolume(number, baseRadius, topRadius, height);
+    const result = frustumConeVolume(baseRadius, topRadius, height);
 
     return { ...result };
-    };
   }
 );
 
@@ -265,7 +223,6 @@ server.tool(
     const result = tetrahedronVolume(edge);
 
    return { ...result };
-    };
   }
 );
 
