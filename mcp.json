@@ -17,6 +17,18 @@
     },
 
     {
+      "name": "compute_circumference",
+      "description": "Compute the exact circumference of a circle from its radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" }
+        },
+        "required": ["radius"]
+      }
+    },
+     
+    {
       "name": "compute_circle_segment_area_from_height_and_parent_circle_radius",
       "description": "Compute the area of a circle segment from its height and the radius of its parent circle.",
       "input_schema": {
@@ -55,18 +67,6 @@
       }
      },
     
-    {
-      "name": "compute_circumference",
-      "description": "Compute the exact circumference of a circle from its radius.",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "radius": { "type": "number" }
-        },
-        "required": ["radius"]
-      }
-    },
-     
     {
       "name": "compute_cone_surface_area",
       "description": "Compute the exact surface area of a cone from its height and bottom radius.",
