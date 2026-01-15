@@ -17,19 +17,7 @@
     },
 
     {
-      "name": "compute_circumference",
-      "description": "Compute the exact circumference of a circle from its radius.",
-      "input_schema": {
-        "type": "object",
-        "properties": {
-          "radius": { "type": "number" }
-        },
-        "required": ["radius"]
-      }
-    },
-     
-    {
-      "name": "compute_circle_segment_area",
+      "name": "compute_circle_segment_area_from_height_and_parent_circle_radius",
       "description": "Compute the area of a circle segment from its height and the radius of its parent circle.",
       "input_schema": {
         "type": "object",
@@ -42,7 +30,7 @@
      },
 
     {
-      "name": "compute_circle_segment_area",
+      "name": "compute_circle_segment_area_from_height_and_chord_length",
       "description": "Compute the area of a circle segment from its height and chord length.",
       "input_schema": {
         "type": "object",
@@ -55,7 +43,7 @@
      },
 
     {
-      "name": "compute_circle_segment_area",
+      "name": "compute_circle_segment_area_from_chord_length_and_parent_circle_radius",
       "description": "Compute the area of a circle segment from its chord length and the radius of its parent circle.",
       "input_schema": {
         "type": "object",
