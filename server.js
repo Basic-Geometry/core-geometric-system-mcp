@@ -4,8 +4,17 @@ import { createServer } from "@modelcontextprotocol/sdk/server";
 import { z } from "zod";
 
 // Import your existing calculator logic.
-// Adjust the path and function names to match your actual file.
-import { computeCircleSegment } from "./core-geometric-system.mjs";
+import { circleArea } from "./core-geometric-system.mjs";
+import { circumference } from "./core-geometric-system.mjs";
+import { segmentArea } from "./core-geometric-system.mjs";
+import { coneSurface } from "./core-geometric-system.mjs";
+import { sphereVolume } from "./core-geometric-system.mjs";
+import { capVolume } from "./core-geometric-system.mjs";
+import { coneVolume } from "./core-geometric-system.mjs";
+import { pyramidVolume } from "./core-geometric-system.mjs";
+import { frustumPyramidVolume } from "./core-geometric-system.mjs";
+import { frustumConeVolume } from "./core-geometric-system.mjs";
+import { tetrahedronVolume } from "./core-geometric-system.mjs";
 
 // Create the MCP server instance
 const server = createServer({
@@ -126,7 +135,7 @@ server.tool(
   },
   async ({ radius }) => {
     // Call your existing logic
-    const result = circumference(radius);
+    const result = sphereVolume(radius);
 
     // Return structured output
     return {
@@ -201,7 +210,7 @@ server.tool(
   },
   async ({ number, baseLength, topLength, height }) => {
     // Call your existing logic
-    const result = pyramidVolume(number, baseLength, topLength, height);
+    const result = frustumPyramidVolume(number, baseLength, topLength, height);
 
     // Return structured output
     return {
