@@ -625,7 +625,7 @@ export function closestValue(input, funcType) {
   return bestMatch;
 }
 
-export function Asin(x) {
+export function asin(x) {
   if (typeof x !== 'number' || isNaN(x) || x < 0 || x > 1) return null;
 
   let radian = null;
@@ -650,7 +650,7 @@ export function Asin(x) {
   return radian;
 }
 
-export function Acos(x) {
+export function acos(x) {
   if (typeof x !== 'number' || isNaN(x) || x < 0 || x > 1) return null;
 
   let radian = null;
@@ -675,7 +675,7 @@ export function Acos(x) {
   return radian;
 }
 
-export function Atan(x) {
+export function atan(x) {
   if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
 
   let radian = null;
