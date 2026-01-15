@@ -759,8 +759,8 @@ export function segmentAreaFromHeightAndRadius(radius, height) {
 
   return {
     radius,
-    height,
     chordLength,
+	height,
     area
   };
   }
