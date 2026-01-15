@@ -60,15 +60,22 @@ Any MCP‑capable host (Claude Desktop, ChatGPT Desktop, GitHub’s MCP integrat
 core-geometric-system-mcp/
 
 │
+
 ├── core-geometric-system.mjs 
 (Pure geometry logic (no UI, no DOM))
+
 │
-├── server.js                   
+
+├── server.js 
 (MCP server exposing the tools)
+
 │
-├── mcp.json                    
+
+├── mcp.json 
 (MCP manifest)
+
 │
+
 └── README.md                   
 (You are here)
 
