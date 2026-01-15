@@ -4,17 +4,20 @@ import { createServer } from "@modelcontextprotocol/sdk/server";
 import { z } from "zod";
 
 // Import your existing calculator logic.
-import { circleArea } from "./core-geometric-system.mjs";
-import { circumference } from "./core-geometric-system.mjs";
-import { segmentArea } from "./core-geometric-system.mjs";
-import { coneSurface } from "./core-geometric-system.mjs";
-import { sphereVolume } from "./core-geometric-system.mjs";
-import { capVolume } from "./core-geometric-system.mjs";
-import { coneVolume } from "./core-geometric-system.mjs";
-import { pyramidVolume } from "./core-geometric-system.mjs";
-import { frustumPyramidVolume } from "./core-geometric-system.mjs";
-import { frustumConeVolume } from "./core-geometric-system.mjs";
-import { tetrahedronVolume } from "./core-geometric-system.mjs";
+import { circleArea, 
+        circumference,
+        segmentAreaFromHeightAndRadius,
+        segmentAreaFromHeightAndChord,
+        segmentAreaFromChordAndRadius,
+        coneSurface, 
+        sphereVolume, 
+        capVolume,
+        coneVolume,
+        pyramidVolume,
+        frustumPyramidVolume,
+        frustumConeVolume,
+        tetrahedronVolume } 
+  from "./core-geometric-system.mjs";
 
 // Create the MCP server instance
 const server = createServer({
@@ -50,12 +53,14 @@ server.tool(
     const result = circumference(radius);
 
     // Return structured output
-    return {
-      circumference: result.circumference
+  return { ...result };
     };
   }
 );
-// Register the circle segment tool
+
+//Register the circle segment area tool
+
+// Height + Radius
 server.tool(
   "compute_circle_segment_area_from_height_and_parent_circle_radius",
   {
@@ -63,13 +68,40 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    // Call your existing logic
-    const result = segmentArea(radius, height);
-
+    const result = segmentAreaFromHeightAndRadius(radius, height);
+    
     // Return structured output
-    return {
-      segment_area: result.segmentArea
-    };
+    return { ...result };
+  }
+);
+
+// Height + Chord
+server.tool(
+  "compute_circle_segment_area_from_height_and_chord_length",
+  {
+    chordLength: z.number(),
+    height: z.number()
+  },
+  async ({ chordLength, height }) => {
+    const result = segmentAreaFromHeightAndChord(height, chordLength);
+    
+    // Return structured output
+    return { ...result };
+  }
+);
+
+// Chord + Radius
+server.tool(
+  "compute_circle_segment_area_from_chord_length_and_parent_circle_radius",
+  {
+    radius: z.number(),
+    chordLength: z.number()
+  },
+  async ({ radius, chordLength }) => {
+    const result = segmentAreaFromChordAndRadius(radius, chordLength);
+   
+    // Return structured output
+    return { ...result };
   }
 );
 
@@ -85,8 +117,7 @@ server.tool(
     const result = segmentArea(chordLength, height);
 
     // Return structured output
-    return {
-      segment_area: result.segmentArea
+    return { ...result };
     };
   }
 );
@@ -103,8 +134,7 @@ server.tool(
     const result = segmentArea(radius, chordLength);
 
     // Return structured output
-    return {
-      segment_area: result.segmentArea
+    return { ...result };
     };
   }
 );
@@ -121,8 +151,7 @@ server.tool(
     const result = coneSurface(radius, height);
 
     // Return structured output
-    return {
-      cone_surface_area: result.coneSurface
+    return { ...result };
     };
   }
 );
@@ -138,8 +167,7 @@ server.tool(
     const result = sphereVolume(radius);
 
     // Return structured output
-    return {
-      sphere_volume: result.sphereVolume
+    return { ...result };
     };
   }
 );
@@ -156,8 +184,7 @@ server.tool(
     const result = capVolume(radius, height);
 
     // Return structured output
-    return {
-      spherical_cap_volume: result.capVolume
+    return { ...result };
     };
   }
 );
@@ -174,8 +201,7 @@ server.tool(
     const result = coneVolume(radius, height);
 
     // Return structured output
-    return {
-      cone_volume: result.coneVolume
+    return { ...result };
     };
   }
 );
@@ -193,8 +219,7 @@ server.tool(
     const result = pyramidVolume(number, baseLength, height);
 
     // Return structured output
-    return {
-      pyramid_volume: result.pyramidVolume
+    return { ...result };
     };
   }
 );
@@ -213,8 +238,7 @@ server.tool(
     const result = frustumPyramidVolume(number, baseLength, topLength, height);
 
     // Return structured output
-    return {
-      frustum_pyramid_volume: result.frustumPyramidVolume
+    return { ...result };
     };
   }
 );
@@ -233,8 +257,7 @@ server.tool(
     const result = frustumConeVolume(number, baseRadius, topRadius, height);
 
     // Return structured output
-    return {
-      frustum_cone_volume: result.frustumConeVolume
+    return { ...result };
     };
   }
 );
@@ -250,8 +273,7 @@ server.tool(
     const result = tetrahedronVolume(edge);
 
     // Return structured output
-    return {
-      tetrahedron_volume: result.tetrahedronVolume
+   return { ...result };
     };
   }
 );
