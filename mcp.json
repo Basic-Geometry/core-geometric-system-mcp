@@ -1,0 +1,177 @@
+{
+  "name": "core-geometric-system-mcp",
+  "version": "0.1.0",
+  "description": "MCP server exposing core geometric computation tools.",
+  "entry_point": "node ./server.js",
+  "tools": [
+    {
+      "name": "compute_circle_area",
+      "description": "Compute the exact area of a circle from its radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" }
+        },
+        "required": ["radius"]
+      }
+    },
+
+    {
+      "name": "compute_circumference",
+      "description": "Compute the exact circumference of a circle from its radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" }
+        },
+        "required": ["radius"]
+      }
+    },
+     
+    {
+      "name": "compute_circle_segment_area",
+      "description": "Compute the area of a circle segment from its height and the radius of its parent circle.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["radius", "height"]
+      }
+     },
+
+    {
+      "name": "compute_circle_segment_area",
+      "description": "Compute the area of a circle segment from its height and chord length.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "length": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["radius", "length"]
+      }
+     },
+
+    {
+      "name": "compute_circle_segment_area",
+      "description": "Compute the area of a circle segment from its chord length and the radius of its parent circle.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" },
+          "length": { "type": "number" }
+        },
+        "required": ["radius", "length"]
+      }
+     },
+    
+    {
+      "name": "compute_cone_surfac_area",
+      "description": "Compute the exact surface area of a cone from its height and bottom radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["radius", "height"]
+      }
+     },
+    
+    {
+      "name": "compute_sphere_volume",
+      "description": "Compute the exact volume of a sphere from its radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" }
+        },
+        "required": ["radius"]
+      }
+    },
+
+    {
+      "name": "compute_spherical_cap_volume",
+      "description": "Approximate the volume of a spherical cap from its height and its bottom radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["radius", "height"]
+      }
+     },
+
+    {
+      "name": "compute_cone_volume",
+      "description": "Calculate the exact volume of a cone from its height and its bottom radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["radius", "height"]
+      }
+     },
+
+    {
+      "name": "compute_pyramid_volume",
+      "description": "Calculate the exact volume of a pyramid from its height and the number and the length of its bottom edges.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "number": { "type": "number" },
+          "baseLength": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["number", "baseLength", "height"]
+      }
+     },
+   
+    {
+      "name": "compute_frustum_pyramid_volume",
+      "description": "Calculate the exact volume of a frustum pyramid from its height and the number and the length of its bottom and top edges.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "number": { "type": "number" },
+          "baseLength": { "type": "number" },
+          "topLength": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["number", "baseLength", "topLength", "height"]
+      }
+     },
+
+    {
+      "name": "compute_frustum_cone_volume",
+      "description": "Calculate the exact volume of a frustum cone from its height and its bottom and top radii.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "baseRadius": { "type": "number" },
+          "topRadius": { "type": "number" },
+          "height": { "type": "number" }
+        },
+        "required": ["baseRadius", "topRadius", "height"]
+      }
+     },
+      
+    {
+      "name": "compute_tetrahedron_volume",
+      "description": "Compute the exact volume of a tetrahedron from its edge length.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" }
+        },
+        "required": ["edge"]
+      }
+    }
+   
+  ]
+}
