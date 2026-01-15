@@ -1,4 +1,4 @@
-#core‑geometric‑system‑mcp
+# core‑geometric‑system‑mcp
 
 A Model Context Protocol server for exact, rational, physically‑grounded geometry
 
@@ -57,16 +57,16 @@ Any MCP‑capable host (Claude Desktop, ChatGPT Desktop, GitHub’s MCP integrat
 📦 Project structure
 
 
-`core-geometric-system-mcp/
+core-geometric-system-mcp/
 │
 ├── core-geometric-system.mjs   
-# Pure geometry logic (no UI, no DOM)
+(Pure geometry logic (no UI, no DOM))
 ├── server.js                   
-# MCP server exposing the tools
+(MCP server exposing the tools)
 ├── mcp.json                    
-# MCP manifest
+(MCP manifest)
 └── README.md                   
-# You are here`
+(You are here)
 
 
 The geometry module contains deterministic formulas only — no DOM access, no event listeners, no UI logic. This makes the system stable, testable, and safe for server‑side use.
