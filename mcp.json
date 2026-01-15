@@ -56,7 +56,19 @@
      },
     
     {
-      "name": "compute_cone_surfac_area",
+      "name": "compute_circumference",
+      "description": "Compute the exact circumference of a circle from its radius.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "radius": { "type": "number" }
+        },
+        "required": ["radius"]
+      }
+    },
+     
+    {
+      "name": "compute_cone_surface_area",
       "description": "Compute the exact surface area of a cone from its height and bottom radius.",
       "input_schema": {
         "type": "object",
