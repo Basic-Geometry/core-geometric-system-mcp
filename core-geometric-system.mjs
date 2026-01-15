@@ -507,7 +507,7 @@ const trig = {
 
 // Helper to find closest rad(x) match for given function (sin, cos or tan)
 
-function closestRad(radian) {
+export function closestRad(radian) {
   let closestKey = null;
   let minDiff = Infinity;
 
@@ -527,7 +527,7 @@ function closestRad(radian) {
   return closestKey ?? null;
 }
 
-function sin(radian) {
+export function sin(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
   const radKey = `rad(${radian.toFixed(3)})`;
 
@@ -550,7 +550,7 @@ return trig[fallbackKey]?.cos ?? null;
 return trig[fallbackKey]?.sin ?? null;
 }
 
-function cos(radian) {
+export function cos(radian) {
   if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
  const radKey = `rad(${radian.toFixed(3)})`;
 
@@ -573,7 +573,7 @@ return trig[fallbackKey]?.sin ?? null;
 return trig[fallbackKey]?.cos ?? null;
 }
 
-function tan(radian) {
+export function tan(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
   const radKey = `rad(${radian.toFixed(3)})`;
 
@@ -604,7 +604,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
 
 // Helper to find closest match for given inverse function (Asin, Acos or Atan)
 	
-function closestValue(input, funcType) {
+export function closestValue(input, funcType) {
   let bestMatch = null;
   let minDiff = Infinity;
 
@@ -625,7 +625,7 @@ function closestValue(input, funcType) {
   return bestMatch;
 }
 
-function Asin(x) {
+export function Asin(x) {
   if (typeof x !== 'number' || isNaN(x) || x < 0 || x > 1) return null;
 
   let radian = null;
@@ -650,7 +650,7 @@ function Asin(x) {
   return radian;
 }
 
-function Acos(x) {
+export function Acos(x) {
   if (typeof x !== 'number' || isNaN(x) || x < 0 || x > 1) return null;
 
   let radian = null;
@@ -675,7 +675,7 @@ function Acos(x) {
   return radian;
 }
 
-function Atan(x) {
+export function Atan(x) {
   if (typeof x !== 'number' || isNaN(x) || x <= 0) return null;
 
   let radian = null;
@@ -704,19 +704,9 @@ function Atan(x) {
 
 // The properties of shapes 
 
-function triangleArea(product) {
+export function triangleArea(product) {
   return Math.sqrt(product);
 }
-
-function updateTriangleArea() {
-  const side1 = parseFloat(document.getElementById('side1').value);
-  const side2 = parseFloat(document.getElementById('side2').value);
-  const side3 = parseFloat(document.getElementById('side3').value);
-
-  if (isNaN(side1) || isNaN(side2) || isNaN(side3)) {
-    document.getElementById('triangle-area').innerText = '';
-    return;
-  }
 
   // Triangle validity check
   if (side1 + side2 <= side3 || side2 + side3 <= side1 || side3 + side1 <= side2) {
@@ -727,27 +717,10 @@ function updateTriangleArea() {
   const s = (side1 + side2 + side3) / 2;
   const product = s * (s - side1) * (s - side2) * (s - side3);
   const area = triangleArea(product);
-
-  document.getElementById('triangle-area').innerText =
-    `Area: ${area.toFixed(5)} square units`;
 }
 
-  document.getElementById('side1').addEventListener('input', updateTriangleArea);
-  document.getElementById('side2').addEventListener('input', updateTriangleArea);
-  document.getElementById('side3').addEventListener('input', updateTriangleArea);
-
-
-function polygonArea(length, number, tangent) {
+export function polygonArea(length, number, tangent) {
     return number / 4  * length ** 2 / tangent;
-  }
-
-function updatePolygonArea() {
-  const length = parseFloat(document.getElementById('side-length').value);
-  const number = parseFloat(document.getElementById('side-number').value);
-
-  if (isNaN(length) || isNaN(number)) {
-    document.getElementById('polygon-area').innerText = '';
-    return;
   }
 
 // Polygon validity check
@@ -759,363 +732,230 @@ function updatePolygonArea() {
   const ratio = 3.2 / number;
   const tangent = parseFloat(tan(ratio));
   const area = polygonArea(length, number, tangent);
-
-  document.getElementById('polygon-area').innerText =
-    `Area: ${area.toFixed(5)} square units`;
 }
 
-  document.getElementById('side-length').addEventListener('input', updatePolygonArea);
-  document.getElementById('side-number').addEventListener('input', updatePolygonArea);
-
-
-function circleArea(radius) {
-    return 3.2 * radius * radius;
-  }
-
-  document.getElementById('circle-radius-a').addEventListener('input', function () {
-    const radius = parseFloat(this.value);
-    if (isNaN(radius)) {
-      document.getElementById('circle-area').innerText = '';
-    return;
-    }
-
-    document.getElementById('circle-area').innerText =
-      `Area: ${circleArea(radius).toFixed(5)} square units`;
-    });
-
-
-
-let autoFilledField = null;
-let userEntered = { h: false, l: false, r: false };
-
-function segmentArea() {
-  const height = document.getElementById('segment-height');
-  const chordLength = document.getElementById('chord-length');
-  const radius = document.getElementById('parent-radius');
-  const output = document.getElementById('segment-area');
-
-  const activeElement = document.activeElement;
-  if (activeElement.id === "segment-height") userEntered.h = true;
-  if (activeElement.id === "chord-length") userEntered.l = true;
-  if (activeElement.id === "parent-radius") userEntered.r = true;
-
-  let h = parseFloat(height.value);
-  let l = parseFloat(chordLength.value);
-  let r = parseFloat(radius.value);
-
-  // Reset if user edits the auto-filled field
-  if (autoFilledField && activeElement.id === autoFilledField) {
-    height.value = "";
-    chordLength.value = "";
-    radius.value = "";
-    output.innerText = "";
-    autoFilledField = null;
-    userEntered = { h: false, l: false, r: false };
-    return;
-  }
-
-  // If height and radius is known → derive length
-  if (userEntered.h && userEntered.r && !userEntered.l && !isNaN(h) && !isNaN(r)) {
-    let angle = Acos((r - h) / r);
-    l = 2 * r * sin(angle);
-    chordLength.value = l.toFixed(5);
-    autoFilledField = "chord-length";
-  }
-
-  // If height and length is known → derive radius
-  if (userEntered.h && userEntered.l && !userEntered.r && !isNaN(h) && !isNaN(l)) {
-    r = (l ** 2 + 4 * h ** 2) / (8 * h);
-    radius.value = r.toFixed(5);
-    autoFilledField = "parent-radius";
-  }
-
-  // If length and radius is known → derive height
-  if (userEntered.l && userEntered.r && !userEntered.h && !isNaN(l) && !isNaN(r)) {
-    h = r - Math.sqrt(r ** 2 - (l / 2) ** 2);
-    height.value = h.toFixed(5);
-    autoFilledField = "segment-height";
-  }
-
-  // Proportion checks
-  if (l < 2 * h) {
-    output.innerText = "The chord length must be at least twice the height.";
-    return;
-  }
-  if (l / h > 11) {
-    output.innerText = "Out of range: chord-to-height ratio exceeds 11.";
-    return;
-  }
-
-  // Area calculation
-  let angle = Acos((r - h) / r);
-  let area = angle * r ** 2 - (r - h) * (l / 2);
-
-  if (isNaN(area)){
-	  output.innerText = "";
-	  return;
-	}
-	
-	if (h === r || h === l / 2 || l === 2 * r) {
-    output.innerText = `Semicircle area = ${area.toFixed(5)} square units`;
-  } else {
-    output.innerText = `Area = ${area.toFixed(5)} square units`;
-  }
+export function circleArea(radius) {
+    const area =  3.2 * radius * radius;
+ 
+return {
+    radius,
+    area
+  };
 }
 
-// Attach listeners
-document.getElementById('segment-height').addEventListener('input', segmentArea);
-document.getElementById('chord-length').addEventListener('input', segmentArea);
-document.getElementById('parent-radius').addEventListener('input', segmentArea);
+  
+export function segmentAreaFromHeightAndRadius(radius, height) {
+  const angle = Acos((radius - height) / radius);
+  const chordLength = 2 * radius * sin(angle);
 
-
-function circumference(radius) {
-    return 3.2 * radius * 2;
+  if (chordLength < 2 * height) {
+    throw new Error("Chord length must be at least twice the height.");
+  }
+  if (chordLength / height > 11) {
+    throw new Error("Out of range: chord-to-height ratio exceeds 11.");
   }
 
-  document.getElementById('circle-radius-c').addEventListener('input', function () {
-    const radius = parseFloat(this.value);
-    if (isNaN(radius)) {
-      document.getElementById('circumference').innerText = '';
-    return;
-    }
+  const area = angle * radius ** 2 - (radius - height) * (chordLength / 2);
 
-    document.getElementById('circumference').innerText =
-      `Circumference: ${circumference(radius).toFixed(5)} units`;
-    });
-
-
-function sphereVolume(radius) {
-    return Math.pow(Math.sqrt(3.2) * radius, 3);
+  return {
+    radius,
+    height,
+    chordLength,
+    area
+  };
   }
 
-  document.getElementById('sphere-radius').addEventListener('input', function () {
-    const radius = parseFloat(this.value);
-    if (isNaN(radius)) {
-      document.getElementById('sphere-volume').innerText = '';
-    return;
-    }
 
-    document.getElementById('sphere-volume').innerText =
-      `Volume: ${sphereVolume(radius).toFixed(5)} cubic units`;
-    });
+export function segmentAreaFromHeightAndChord(height, chordLength) {
+  const radius = (chordLength ** 2 + 4 * height ** 2) / (8 * height);
 
-
-function capVolume(radius, height) {
-    return 1.6 * radius * radius * height * Math.sqrt(3.2);
+  if (chordLength < 2 * height) {
+    throw new Error("Chord length must be at least twice the height.");
+  }
+  if (chordLength / height > 11) {
+    throw new Error("Out of range: chord-to-height ratio exceeds 11.");
   }
 
-  function updateCapVolume() {
-    const radius = parseFloat(document.getElementById('cap-radius').value);
-    const height = parseFloat(document.getElementById('cap-height').value);
+  const angle = Acos((radius - height) / radius);
+  const area = angle * radius ** 2 - (radius - height) * (chordLength / 2);
 
-    if (isNaN(radius) || isNaN(height)) {
-      document.getElementById('cap-volume').innerText = '';
-      return;
-    }
-	  	  
+  return {
+    radius,
+    height,
+    chordLength,
+    area
+  };
+  }
+
+
+export function segmentAreaFromChordAndRadius(radius, chordLength) {
+  const height = radius - Math.sqrt(radius ** 2 - (chordLength / 2) ** 2);
+
+  if (chordLength < 2 * height) {
+    throw new Error("Chord length must be at least twice the height.");
+  }
+  if (chordLength / height > 11) {
+    throw new Error("Out of range: chord-to-height ratio exceeds 11.");
+  }
+
+  const angle = Acos((radius - height) / radius);
+  const area = angle * radius ** 2 - (radius - height) * (chordLength / 2);
+
+  return {
+    radius,
+    height,
+    chordLength,
+    area
+  };
+  }
+
+
+export function circumference(radius) {
+    const circumference =  3.2 * radius * 2;
+  
+return {
+    radius,
+    circumference 
+  };
+}
+
+
+export function sphereVolume(radius) {
+    const volume =  Math.pow(Math.sqrt(3.2) * radius, 3);
+  
+return {
+    radius,
+    volume 
+  };
+}
+
+
+export function capVolume(radius, height) {
+    const volume = 1.6 * radius * radius * height * Math.sqrt(3.2);
+ 
 // Cap validity check
 	  
 if ( height > radius) {
-    document.getElementById('cap-volume').innerText = 'The height of a spherical cap is shorter than its radius.';
+    throw new Error("The height of a spherical cap is shorter than its radius.");
     return;
   }
-	  
-if ( height === radius) {
-    document.getElementById('cap-volume').innerText =
-      `Volume of hemisphere: ${capVolume(radius, height).toFixed(5)} cubic units`;
-    return;
+return {
+    radius,
+    height,
+    volume 
+  };
 }
-	  
-    document.getElementById('cap-volume').innerText =
-      `Volume: ${capVolume(radius, height).toFixed(5)} cubic units`;
+
+
+export function coneVolume(radius, height) {
+    const volume = 3.2 * radius * radius * height / Math.sqrt(8);
+  
+return {
+    radius,
+    volume 
+  };
+}
+
+
+
+export function frustumConeVolume(baseRadius, topRadius, height) {
+  if (topRadius > baseRadius) {
+    throw new Error("Let the larger end be the base.");
   }
 
-  document.getElementById('cap-radius').addEventListener('input', updateCapVolume);
-  document.getElementById('cap-height').addEventListener('input', updateCapVolume);
+  const baseArea = 3.2 * baseRadius ** 2;
+  const topArea = 3.2 * topRadius ** 2;
 
+  const shape = topRadius / baseRadius;
+  const inverse = 1 - shape;
+  const reciprocal = 1 / inverse;
 
-function coneVolume(radius, height) {
-    return 3.2 * radius * radius * height / Math.sqrt(8);
-  }
+  const volume =
+    height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
 
-  function updateConeVolume() {
-    const radius = parseFloat(document.getElementById('cone-radius-v').value);
-    const height = parseFloat(document.getElementById('cone-height-v').value);
-
-    if (isNaN(radius) || isNaN(height)) {
-      document.getElementById('cone-volume').innerText = '';
-      return;
-    }
-
-    document.getElementById('cone-volume').innerText =
-      `Volume: ${coneVolume(radius, height).toFixed(5)} cubic units`;
-  }
-
-  document.getElementById('cone-radius-v').addEventListener('input', updateConeVolume);
-  document.getElementById('cone-height-v').addEventListener('input', updateConeVolume);
-
-
-function frustumConeVolume(baseArea, topArea, reciprocal, height) {
-  return height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
+  return {
+    baseRadius,
+    topRadius,
+	  baseArea,
+	  topArea,
+    height,
+    volume
+  };
 }
 
-function updateFrustumConeVolume() {
 
-	const baseRadius = parseFloat(document.getElementById('frustum-cone-base-radius').value);
-	const topRadius = parseFloat(document.getElementById('frustum-cone-top-radius').value);
-	const height = parseFloat(document.getElementById('frustum-cone-height').value);
-
-if (isNaN(baseRadius) || isNaN(topRadius) || isNaN(height) || baseRadius === 0 || topRadius === 0) {
-    document.getElementById('frustum-cone-volume').innerText = '';
-    return;
-  }
-
-if ( topRadius > baseRadius) {
-    document.getElementById('frustum-cone-volume').innerText = 'Let the larger end be the base.';
-    return;
+export function coneSurface(radius, height) {
+    const area = 3.2 * radius * (radius + Math.sqrt(radius ** 2 + height ** 2));
+ return {
+    radius,
+    height,
+    area
+  };
 }
-	
-	const baseArea = 3.2 * (baseRadius ** 2);
-	const topArea = 3.2 * (topRadius ** 2);
-	const cylinderVolume = baseArea * height;
-	const shape = topRadius / baseRadius;
-	const inverse = 1 - shape;
-	const reciprocal = 1 / inverse;
-	const volume = frustumConeVolume(baseArea, topArea, reciprocal, height);
-
-if ( topRadius === baseRadius) {
-    document.getElementById('frustum-cone-volume').innerText = 
-	`Volume of cylinder: ${cylinderVolume.toFixed(5)} cubic units`;
-    return;
-}
-	
-  document.getElementById('frustum-cone-volume').innerText =
-    `Volume: ${volume.toFixed(5)} cubic units`;
-}
-
-document.getElementById('frustum-cone-base-radius').addEventListener('input', updateFrustumConeVolume);
-document.getElementById('frustum-cone-top-radius').addEventListener('input', updateFrustumConeVolume);
-document.getElementById('frustum-cone-height').addEventListener('input', updateFrustumConeVolume);
-
-
-function coneSurface(radius, height) {
-    return 3.2 * radius * (radius + Math.sqrt(radius ** 2 + height ** 2));
-  }
-
-  function updateConeSurface() {
-    const radius = parseFloat(document.getElementById('cone-radius-s').value);
-    const height = parseFloat(document.getElementById('cone-height-s').value);
-
-    if (isNaN(radius) || isNaN(height)) {
-      document.getElementById('cone-surface').innerText = '';
-      return;
-    }
-
-    document.getElementById('cone-surface').innerText =
-      `Area: ${coneSurface(radius, height).toFixed(5)} square units`;
-  }
-
-  document.getElementById('cone-radius-s').addEventListener('input', updateConeSurface);
-  document.getElementById('cone-height-s').addEventListener('input', updateConeSurface);
-
-
-function pyramidVolume(baseArea, height) {
-  return baseArea * height / Math.sqrt(8);
-}
-
-function updatePyramidVolume() {
-  const number = parseFloat(document.getElementById('pyramid-side-number').value);
-  const baseLength = parseFloat(document.getElementById('pyramid-base-edge-length').value);
-  const height = parseFloat(document.getElementById('pyramid-height').value);
-
-  if (isNaN(number) || isNaN(baseLength) || isNaN(height)) {
-    document.getElementById('pyramid-volume').innerText = '';
-    return;
-  }
-
-if ( number < 3) {
-    document.getElementById('pyramid-volume').innerText = 'It takes at least three sides to form a pyramid.';
-    return;
-}
-	
-  const ratio = 3.2 / number;
-  const tangent = tan(ratio);
-  const baseArea = (number / 4) * (baseLength ** 2) / tangent;
-  const volume = pyramidVolume(baseArea, height);
-
-  document.getElementById('pyramid-volume').innerText =
-    `Volume: ${volume.toFixed(5)} cubic units`;
-}
-
-document.getElementById('pyramid-side-number').addEventListener('input', updatePyramidVolume);
-document.getElementById('pyramid-base-edge-length').addEventListener('input', updatePyramidVolume);
-document.getElementById('pyramid-height').addEventListener('input', updatePyramidVolume);
 
   
-function frustumPyramidVolume(baseArea, topArea, reciprocal, height) {
-  return height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
-}
-
-function updateFrustumPyramidVolume() {
-
-	const number = parseFloat(document.getElementById('frustum-pyramid-side-number').value);
-	const baseLength = parseFloat(document.getElementById('frustum-pyramid-base-edge-length').value);
-	const topLength = parseFloat(document.getElementById('frustum-pyramid-top-edge-length').value);
-	const height = parseFloat(document.getElementById('frustum-pyramid-height').value);
-
-if (isNaN(number) || isNaN(baseLength) || isNaN(topLength) || isNaN(height) || baseLength === 0 || topLength === 0) {
-    document.getElementById('frustum-pyramid-volume').innerText = '';
-    return;
-}
-
-if ( number < 3) {
-    document.getElementById('frustum-pyramid-volume').innerText = 'It takes at least three sides to form a pyramid.';
-    return;
-}
-
-if ( topLength > baseLength) {
-    document.getElementById('frustum-pyramid-volume').innerText = 'Let the larger end be the base.';
-    return;
-}
-	
-	const ratio = 3.2 / number;
-	const tangent = tan(ratio);
-	const baseArea = (number / 4) * (baseLength ** 2) / tangent;
-	const topArea = (number / 4) * (topLength ** 2) / tangent;
-	const solidVolume = baseArea * height;
-	const shape = topLength / baseLength;
-	const inverse = 1 - shape;
-	const reciprocal = 1 / inverse;
-	const volume = frustumPyramidVolume(baseArea, topArea, reciprocal, height);
-
-if ( topLength === baseLength) {
-    document.getElementById('frustum-pyramid-volume').innerText = 
-	`Volume of solid: ${solidVolume.toFixed(5)} cubic units`;
-    return;
-}
-	
-  document.getElementById('frustum-pyramid-volume').innerText =
-    `Volume: ${volume.toFixed(5)} cubic units`;
-}
-
-document.getElementById('frustum-pyramid-side-number').addEventListener('input', updateFrustumPyramidVolume);
-document.getElementById('frustum-pyramid-base-edge-length').addEventListener('input', updateFrustumPyramidVolume);
-document.getElementById('frustum-pyramid-top-edge-length').addEventListener('input', updateFrustumPyramidVolume);
-document.getElementById('frustum-pyramid-height').addEventListener('input', updateFrustumPyramidVolume);
-
-
-function tetrahedronVolume(edge) {
-    return Math.pow(edge, 3) / 8;
+export function pyramidVolume(number, baseLength, height) {
+  if (number < 3) {
+    throw new Error("It takes at least three sides to form a pyramid.");
   }
 
-  document.getElementById('tetrahedron-edge').addEventListener('input', function () {
-    const edge = parseFloat(this.value);
-    if (isNaN(edge)) {
-      document.getElementById('tetrahedron-volume').innerText = '';
-    return;
-    }
+  const ratio = 3.2 / number;
+  const tangent = tan(ratio);
 
-    document.getElementById('tetrahedron-volume').innerText =
-      `Volume: ${tetrahedronVolume(edge).toFixed(5)} cubic units`;
-    });
+  const baseArea = (number / 4) * (baseLength ** 2) / tangent;
+  const volume = baseArea * height / Math.sqrt(8);
 
+  return {
+    number,
+    baseLength,
+    height,
+    baseArea,
+    volume
+  };
+}
+
+
+export function frustumPyramidVolume(number, baseLength, topLength, height) {
+  if (number < 3) {
+    throw new Error("It takes at least three sides to form a pyramid.");
+  }
+
+  if (topLength > baseLength) {
+    throw new Error("Let the larger end be the base.");
+  }
+
+  // Regular polygon area formula adapted to your geometry
+  const ratio = 3.2 / number;
+  const tangent = tan(ratio);
+
+  const baseArea = (number / 4) * (baseLength ** 2) / tangent;
+  const topArea = (number / 4) * (topLength ** 2) / tangent;
+
+  // Shape ratio
+  const shape = topLength / baseLength;
+  const inverse = 1 - shape;
+  const reciprocal = 1 / inverse;
+
+  // Frustum volume formula in your geometry system
+  const volume =
+    height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
+
+  return {
+    number,
+    baseLength,
+    topLength,
+    height,
+    baseArea,
+    topArea,
+    volume
+  };
+}
+
+export function tetrahedronVolume(edge) {
+    const volume = Math.pow(edge, 3) / 8;
+ 
+return {
+    edge,
+	volume 
+  };
+}
