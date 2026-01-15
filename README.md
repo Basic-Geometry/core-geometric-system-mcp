@@ -59,25 +59,14 @@ Any MCP‑capable host (Claude Desktop, ChatGPT Desktop, GitHub’s MCP integrat
 
 core-geometric-system-mcp/
 
-│
-
 ├── core-geometric-system.mjs 
 (Pure geometry logic (no UI, no DOM))
 
-│
+├── server.js (MCP server exposing the tools)
 
-├── server.js 
-(MCP server exposing the tools)
+├── mcp.json (MCP manifest)
 
-│
-
-├── mcp.json 
-(MCP manifest)
-
-│
-
-└── README.md                   
-(You are here)
+└── README.md (You are here)
 
 
 The geometry module contains deterministic formulas only — no DOM access, no event listeners, no UI logic. This makes the system stable, testable, and safe for server‑side use.
