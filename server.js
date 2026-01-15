@@ -245,7 +245,7 @@ server.tool(
   {
     edge: z.number()
   },
-  async ({ radius }) => {
+  async ({ edge }) => {
     // Call your existing logic
     const result = tetrahedronVolume(edge);
 
