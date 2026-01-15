@@ -135,6 +135,24 @@ server.tool(
   }
 );
 
+// Register the spherical cap volume tool
+server.tool(
+  "compute_spherical_cap_volume",
+  {
+    radius: z.number(),
+    height: z.number()
+  },
+  async ({ radius, height }) => {
+    // Call your existing logic
+    const result = capVolume(radius, height);
+
+    // Return structured output
+    return {
+      spherical_cap_volume: result.capVolume
+    };
+  }
+);
+
 // Register the cone volume tool
 server.tool(
   "compute_cone_volume",
