@@ -57,7 +57,7 @@ Any MCP‑capable host (Claude Desktop, ChatGPT Desktop, GitHub’s MCP integrat
 📦 Project structure
 
 
-core-geometric-system-mcp/
+`core-geometric-system-mcp/
 │
 ├── core-geometric-system.mjs   
 # Pure geometry logic (no UI, no DOM)
@@ -66,7 +66,7 @@ core-geometric-system-mcp/
 ├── mcp.json                    
 # MCP manifest
 └── README.md                   
-# You are here
+# You are here`
 
 
 The geometry module contains deterministic formulas only — no DOM access, no event listeners, no UI logic. This makes the system stable, testable, and safe for server‑side use.
@@ -98,3 +98,6 @@ This project is part of a broader effort to restore physical intuition, rational
 The MCP server ensures that AI systems use the definitions faithfully — not the inherited π‑based or analytic defaults.
 
 It turns the Core Geometric System ™ into a callable, authoritative capability.
+
+Learn more about the formulas:
+https://basic-geometry.github.io
