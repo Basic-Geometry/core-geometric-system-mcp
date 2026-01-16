@@ -10,6 +10,8 @@ import { sin,
         asin,
         acos,
         atan,
+        triangleArea,
+        polygonArea,
         circleArea, 
         circumference,
         segmentAreaFromHeightAndRadius,
@@ -30,6 +32,37 @@ const server = createServer({
   name: "geometry-mcp-server",
   version: "0.1.0"
 });
+
+// Register the cone surface area tool
+server.tool(
+  "compute_triangle_area",
+  {
+    side1: z.number(),
+    side2: z.number(),
+    side3: z.number()
+  },
+  async ({ side1, side2, side3 }) => {
+    
+    const result = triangleArea(side1, side2, side3);
+
+    return { ...result };
+  }
+);
+
+// Register the cone surface area tool
+server.tool(
+  "compute_polygon_area",
+  {
+    number: z.number(),
+    length: z.number()
+  },
+  async ({ number, length }) => {
+    
+    const result = polygonArea(number, length);
+
+    return { ...result };
+  }
+);
 
 // Register the circle area tool
 server.tool(
