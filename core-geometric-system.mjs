@@ -704,35 +704,43 @@ export function atan(x) {
 
 // The properties of shapes 
 
-export function triangleArea(product) {
-  return Math.sqrt(product);
-}
-
-  // Triangle validity check
-  if (side1 + side2 <= side3 || side2 + side3 <= side1 || side3 + side1 <= side2) {
-    document.getElementById('triangle-area').innerText = 'The sum of the length of the two shorter sides of a triangle is larger than the thrid one.';
-    return;
+export function triangleArea(side1, side2, side3) {
+  if (side1 + side2 <= side3 ||
+      side2 + side3 <= side1 ||
+      side3 + side1 <= side2) {
+    throw new Error("The sum of the two shorter sides must exceed the third.");
   }
 
   const s = (side1 + side2 + side3) / 2;
   const product = s * (s - side1) * (s - side2) * (s - side3);
-  const area = triangleArea(product);
+  const area = Math.sqrt(product);
+
+  return {
+    side1,
+    side2,
+    side3,
+    area
+  };
 }
 
-export function polygonArea(length, number, tangent) {
-    return number / 4  * length ** 2 / tangent;
-  }
 
-// Polygon validity check
+export function polygonArea(length, number) {
   if (number < 3) {
-    document.getElementById('polygon-area').innerText = 'It takes at least three sides to form a polygon.';
-    return;
+    throw new Error("It takes at least three sides to form a polygon.");
   }
 
   const ratio = 3.2 / number;
-  const tangent = parseFloat(tan(ratio));
-  const area = polygonArea(length, number, tangent);
+  const tangent = tan(ratio);
+  const area = (number / 4) * (length ** 2) / tangent;
+
+  return {
+    length,
+    number,
+    tangent,
+    area
+  };
 }
+
 
 export function circleArea(radius) {
     const area =  3.2 * radius * radius;
