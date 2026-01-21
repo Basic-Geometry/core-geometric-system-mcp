@@ -1,6 +1,6 @@
 {
   "name": "core-geometric-system-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server exposing core geometric computation tools.",
   "entry_point": "node ./server.js",
   "tools": [
