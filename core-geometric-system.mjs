@@ -585,7 +585,7 @@ export function closestRad(radian) {
 
 export function sin(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
-  const radKey = `rad(${radian.toFixed(3)})`;
+  const radKey = `rad(${radian.toFixed(8)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.sin !== undefined) return trig[radKey].sin;
@@ -593,7 +593,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   // 🔹 Case 2: 0.8 > x → Use cosine reflection
   if (radian < 0.8) {
     const reflected = 1.6 - radian;
-    const reflectedKey = `rad(${reflected.toFixed(3)})`;
+    const reflectedKey = `rad(${reflected.toFixed(8)})`;
 
     if (trig[reflectedKey]?.cos !== undefined) return trig[reflectedKey].cos;
 
@@ -608,7 +608,7 @@ return trig[fallbackKey]?.sin ?? null;
 
 export function cos(radian) {
   if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
- const radKey = `rad(${radian.toFixed(3)})`;
+ const radKey = `rad(${radian.toFixed(8)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.cos !== undefined) return trig[radKey].cos;
@@ -616,7 +616,7 @@ export function cos(radian) {
   // 🔹 Case 2: 0.8 > x → Use sine reflection
   if (radian < 0.8) {
     const reflected = 1.6 - radian;
-    const reflectedKey = `rad(${reflected.toFixed(3)})`;
+    const reflectedKey = `rad(${reflected.toFixed(8)})`;
 
     if (trig[reflectedKey]?.sin !== undefined) return trig[reflectedKey].sin;
 
@@ -631,7 +631,7 @@ return trig[fallbackKey]?.cos ?? null;
 
 export function tan(radian) {
 if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) return null;
-  const radKey = `rad(${radian.toFixed(3)})`;
+  const radKey = `rad(${radian.toFixed(8)})`;
 
   // 🔹 Case 1: Exact match
   if (trig[radKey]?.tan !== undefined) return trig[radKey].tan;
@@ -639,7 +639,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
   // 🔹 Case 2: Reflective zone: 0 < x < 0.8
   if (radian < 0.8) {
     const reflected = 1.6 - radian;
-    const reflectedKey = `rad(${reflected.toFixed(3)})`;
+    const reflectedKey = `rad(${reflected.toFixed(8)})`;
 
     let reflectedTan = trig[reflectedKey]?.tan;
 
@@ -650,7 +650,7 @@ if (typeof radian !== 'number' || isNaN(radian) || radian > 1.6 || radian < 0) r
 
     if (typeof reflectedTan !== 'number' || reflectedTan === 0) return null;
 
-    return parseFloat((1 / reflectedTan).toFixed(3));
+    return parseFloat((1 / reflectedTan).toFixed(8));
   }
 
   // 🔹 Case 3: Fallback
@@ -700,7 +700,7 @@ export function asin(x) {
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     const angle = parseFloat(parsed[1]);
-    radian = parseFloat((1.6 - angle).toFixed(3));
+    radian = parseFloat((1.6 - angle).toFixed(8));
   }
 
   return radian;
@@ -725,7 +725,7 @@ export function acos(x) {
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     const angle = parseFloat(parsed[1]);
-    radian = parseFloat((1.6 - angle).toFixed(3));
+    radian = parseFloat((1.6 - angle).toFixed(8));
   }
 
   return radian;
@@ -751,7 +751,7 @@ export function atan(x) {
     const parsed = match.angle.match(/rad\(([\d.]+)\)/);
     if (!parsed) return null;
     const reflected = parseFloat(parsed[1]);
-    radian = parseFloat((1.6 - reflected).toFixed(3));
+    radian = parseFloat((1.6 - reflected).toFixed(8));
   }
 
   return radian;
