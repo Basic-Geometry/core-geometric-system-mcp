@@ -55,12 +55,12 @@
        },
          
        "step": {
-        "position", "2",
+        "position": "2",
         "abstract": "The length of the centerline equals the side length of the square. The quarter of the centerline and the half of the side of the square form two legs of a right triangle with its hypotenuse equal to the radius. The ratio between the radius and the side length is calculable.",
        },
 
        "step": {
-        "position", "3",
+        "position": "3",
         "abstract": "The ratio between the squared radius of the circle and an equiareal square."
         "PropertyValue": [
            {
