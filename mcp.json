@@ -83,10 +83,7 @@
          "value": "3.2 × radius^2"
          }
         }
-        ]
-    },
-
-
+        ],
       "input_schema": {
         "type": "object",
         "name": "circle",
