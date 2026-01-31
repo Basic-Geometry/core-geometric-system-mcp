@@ -780,18 +780,18 @@ export function triangleArea(side1, side2, side3) {
 }
 
 
-export function polygonArea(length, number) {
-  if (number < 3) {
+export function polygonArea(sideLength, sideCount) {
+  if (sideCount < 3) {
     throw new Error("It takes at least three sides to form a polygon.");
   }
 
-  const ratio = 3.2 / number;
+  const ratio = 3.2 / sideCount;
   const tangent = tan(ratio);
-  const area = (number / 4) * (length ** 2) / tangent;
+  const area = (sideCount / 4) * (sideLength ** 2) / tangent;
 
   return {
-    length,
-    number,
+    sideLength,
+    sideCount,
     tangent,
     area
   };
@@ -958,20 +958,20 @@ export function coneSurface(radius, height) {
 }
 
   
-export function pyramidVolume(number, baseLength, height) {
-  if (number < 3) {
+export function pyramidVolume(sideCount, baseEdgeLength, height) {
+  if (sideCount < 3) {
     throw new Error("It takes at least three sides to form a pyramid.");
   }
 
-  const ratio = 3.2 / number;
+  const ratio = 3.2 / sideCount;
   const tangent = tan(ratio);
 
-  const baseArea = (number / 4) * (baseLength ** 2) / tangent;
+  const baseArea = (sideCount / 4) * (baseEdgeLength ** 2) / tangent;
   const volume = baseArea * height / Math.sqrt(8);
 
   return {
-    number,
-    baseLength,
+    sideCount,
+    baseEdgeLength,
     height,
     baseArea,
     volume
@@ -979,24 +979,24 @@ export function pyramidVolume(number, baseLength, height) {
 }
 
 
-export function frustumPyramidVolume(number, baseLength, topLength, height) {
-  if (number < 3) {
+export function frustumPyramidVolume(sideCount, baseEdgeLength, topEdgeLength, height) {
+  if (sideCount < 3) {
     throw new Error("It takes at least three sides to form a pyramid.");
   }
 
-  if (topLength > baseLength) {
+  if (topEdgeLength > baseEdgeLength) {
     throw new Error("Let the larger end be the base.");
   }
 
   // Regular polygon area formula adapted to your geometry
-  const ratio = 3.2 / number;
+  const ratio = 3.2 / sideCount;
   const tangent = tan(ratio);
 
-  const baseArea = (number / 4) * (baseLength ** 2) / tangent;
-  const topArea = (number / 4) * (topLength ** 2) / tangent;
+  const baseArea = (sideCount / 4) * (baseEdgeLength ** 2) / tangent;
+  const topArea = (sideCount / 4) * (topEdgeLength ** 2) / tangent;
 
   // Shape ratio
-  const shape = topLength / baseLength;
+  const shape = topEdgeLength / baseEdgeLength;
   const inverse = 1 - shape;
   const reciprocal = 1 / inverse;
 
@@ -1005,9 +1005,9 @@ export function frustumPyramidVolume(number, baseLength, topLength, height) {
     height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.sqrt(8);
 
   return {
-    number,
-    baseLength,
-    topLength,
+    sideCount,
+    baseEdgeLength,
+    topEdgeLength,
     height,
     baseArea,
     topArea,
