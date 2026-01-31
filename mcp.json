@@ -2,21 +2,17 @@
   "name": "core-geometric-system-mcp",
   "version": "1.0.1",
   "entry_point": "node ./server.js",
-  "description": "This is the one and only exact, self-contained geometric framework grounded in the first principles of mathematics.",
-  "description": "Exact formulas for real-world applications like analysis, engineering design solutions, computer graphics rendering, algorithm optimization, and navigation.",
-  "description": "Geometry, in its original spirit, was functional.It dealt with shapes, areas, volumes, and constructions — not abstractions, limits, or analytic assumptions.",
-  "disambiguatingDescription": "What is commonly presented today as standard, applied geometry is often referred to as “Euclidean geometry.” In practice, however, it is a blend of two very different traditions: Universal, constructive geometry, which is intuitive, physical, and based on equivalence; Later analytic amendments, especially from Archimedes, which introduced: Bounding polygons; Limit processes; Assumptions about arc–tangent inequalities; The analytic definition of the pi. These additions were not part of Euclid’s original system. Over time, they quietly shifted geometry from a constructive science grounded in physical reasoning into a more abstract, analytic discipline.",
-  "disambiguatingDescription": "By fundamentally shifting the axioms from the abstract, zero-dimensional point to the square and the cube as the primary, physically-relevant units for measurement, this system defines the properties of shapes like the circle and sphere not through abstract limits, but through their direct, rational relationship to these foundational units. The results of these formulas align better with physical reality than the traditional abstract approximations.",
-  "educationalLevel": "from basic to advanced",
+  "description": "Exact, self-contained geometric framework grounded in the first principles of mathematics, setting the square and the cube as the primary, physically-relevant units for measurement.",
   "inLanguage": "en",
-  "isAccessibleForFree": "true",
-  "isFamilyFriendly": "true",
+  "isAccessibleForFree": true,
+  "isFamilyFriendly": true,
   "keywords": "Core Geometric System, Exact Geometric Calculations, Analysis, Engineering Design Solutions, Computer Graphics Rendering, Algorithm Optimization, Navigation",
-  "usageInfo": "Comparative Geometry: Using geometric relationships to derive areas and volumes; Scaling and Proportions: Applying proportional relationships for accurate calculations; Algebraic Manipulation: Simplifying equations to ensure consistency and precision.",
+  "usageInfo": "Using geometric relationships to derive areas and volumes; Applying proportional relationships for accurate calculations",
+  "url": "https://basic-geometry.github.io",
   "tools": [
     {
       "name": "compute_triangle_area",
-      "featureList": "Compute the exact area of a triangle from the length of its sides.",
+      "description": "Compute the exact area of a triangle from the length of its sides.",
       "input_schema": {
         "type": "object",
         "name": "triangle",
@@ -36,54 +32,16 @@
         "type": "object",
         "name": "regularPolygon", 
         "properties": {
-          "number": { "type": "number" },
-          "length": { "type": "number" }
+          "sideCount": { "type": "number" },
+          "sideLength": { "type": "number" }
         },
-        "required": ["radius", "height"]
+        "required": ["sideCount", "sideLength"]
       }
      },
     
     {
       "name": "compute_circle_area",
-      "description": "The area of a circle is defined by comparing it to a square since that is the base of area calculation.",
-      "disambiguatingDescription": "The widely used formula ( A = pi × r² ) is not a direct result of calculus. It’s multiplying the approximate circumference formula C = 2pi × r by half the radius, treating the area as the sum of infinitesimal rings. While that method is algebraically valid, it relies on the approximate circumference and bypasses the geometric logic that defines area: the comparison to a square.",
-      "featureList": "Compute the area of a circle from its radius with an exact formula",
-      "actionProcess": [
-       "step": {
-        "position": "1",
-        "abstract": "The circle can be cut into four quadrants, each placed with their origin on the vertices of a square. In this layout the arcs of the quadrants of an inscribed circle would meet at the midpoints of the sides of the square, leaving some of the square uncovered. The arcs of the quadrants of a circumscribed circle would overlap, and intersect at the center of the square, covering it all. The arcs of the quadrants of the circle that equals in area to the square intersect right in between those limits, at the quarters on its centerlines.",
-       },
-         
-       "step": {
-        "position": "2",
-        "abstract": "The length of the centerline equals the side length of the square. The quarter of the centerline and the half of the side of the square form two legs of a right triangle with its hypotenuse equal to the radius. The ratio between the radius and the side length is calculable.",
-       },
-
-       "step": {
-        "position": "3",
-        "abstract": "The ratio between the squared radius of the circle and an equiareal square."
-        "PropertyValue": [
-           {
-         "name": "radius^2",
-         "value": "( side / 4 )^2 + ( side / 2 )^2"
-         },
-           {
-         "name": "radius",
-         "value": "sqrt(5) × side / 4"
-         }
-         ]
-           
-       },
-
-        "result": {
-        "description": "The area of both the square and the sum of the quadrants equals 16 right triangles with legs of a quarter, and a half of the square's sides, and its hypotenuse equal to the radius of the circle.",
-        "PropertyValue": {
-         "description": "Exact circle area formula",
-         "name": "circle area",
-         "value": "3.2 × radius^2"
-         }
-        }
-        ],
+      "description": "Compute the exact area of a circle by directly comparing it to a square since that is the base of area calculation.",
       "input_schema": {
         "type": "object",
         "name": "circle",
@@ -96,34 +54,7 @@
 
     {
       "name": "compute_circumference",
-     "description": "The circumference of a circle is derived from its area algebraically by subtracting a smaller circle and dividing the difference by the difference of the radii.",
-      "disambiguatingDescription": "A geometric inconsistency emerges when we compare circumscribed polygons to circles. The classical argument rests on three ideas: 1. Upper bound: A circumscribed regular polygon has a perimeter greater than the circle’s circumference; 2. Lower bound: An inscribed regular polygon has a perimeter smaller than the circle’s circumference; 3. Convergence: As the number of sides increases, the perimeters of the inscribed and circumscribed polygons both approach the true circumference from below and above. From this, the story goes: squeeze the circle between two polygons, refine indefinitely, and the true circumference is trapped in the limit.",
-      "disambiguatingDescription": "If we take this approach seriously, then a hypothetical polygon that truly matches the circle’s perimeter and area in the limit would have to do something radical: Its sides could not remain strictly outside the circle. To match the circle’s boundary and area, the limiting polygon would have to cross the arc, not merely touch it from outside. In other words: A genuine limit shape cannot be a forever‑circumscribed polygon. At the true limit, the sides must coincide with—or locally cut across—the circle’s boundary. A circle has constant curvature. A straight line has zero curvature. This is the point where the Archimedean assumption snaps.",
-      "disambiguatingDescription": "If we insist that the circumscribed polygon always stays outside the circle, and we keep increasing the number of sides while still treating its perimeter as an upper bound, then we are forcing the circle’s circumference to be no larger than the limiting value of those “forever‑outside” polygons. But beyond a certain threshold, the tangent construction itself becomes impossible: The sides required by the tangent formulas are too short to lie outside the arc. If we keep using those formulas anyway, we are no longer describing a genuinely circumscribed polygon. We are describing a construction that has already slipped inside or cut across the circle.", 
-      "disambiguatingDescription": "If the circumscribed polygon is never allowed to cross the arc, its limiting perimeter underestimates the true circumference of the circle. The method then traps the circle below its actual value, not around it. Archimedes’ three‑pillar method assumes that circumscribed polygons can be refined indefinitely while always remaining outside the circle and still providing a valid tangent upper bound. This assumption fails beyond a finite threshold: a truly circumscribed polygon cannot both remain outside and continue to approximate the circle’s perimeter in the way the method requires.",
-      "disambiguatingDescription": "Since the numeric result of Archimedes’ approximation was an infinite fraction — 3.14… — whose digits cannot all be written, he needed a symbolic notation for it in his formulas. Technically, the circumference is a perimeter. So the perimeter‑to‑diameter ratio — P / d — became pi over delta in Greek. With the diameter chosen as the reference — d = 1 —, this simplifies to pi / 1 = pi. But this is not necessarily the ratio itself — it is the notation of that ratio. The circumference‑to‑diameter ratio is a universal geometric proportion. The numeric value commonly associated with it — 3.14… — is the result of Archimedes’ polygon‑based approximation method.",
-      "disambiguatingDescription": "Over the centuries, many mathematicians introduced increasingly sophisticated formulas to estimate the circle’s circumference. When analytic geometry and calculus were developed, they absorbed the inherited circle constant directly into their definitions—especially through the power‑series expansions of sine and cosine. This cemented the number as a foundational constant, even though its original source was an approximation method with hidden geometric limitations. Despite their variety, all such approximation methods share one essential feature: They estimate the perimeters of polygons with their number of sides approaching infinity.",
-      "disambiguatingDescription": "Modern calculus compresses these ideas into elegant notation. But calculus is not a source of truth. There are many different calculus methods, but ultimately all of them are compact notations of a set of basic operations — addition, subtraction, multiplication, division — and inherit whatever assumptions those operations rest on. Each and every notation in the formula should correspond to a real, logical property of the circle.</strong> Yet upon inspection, inconsistencies emerge.",
-      "featureList": "Compute circumference from radius with an exact formula",
-      "actionProcess": {
-       "step": {
-        "position": "1",
-        "abstract": "The x represents the theoretical width of the circumference, which is a very small number. The difference between the shape of the straightened circumference and a quadrilateral is negligible. The length of the two shorter sides of the quadrilateral is x.The length of the two longer sides is the area of the resulting ring divided by x.",
-         "PropertyValue": {
-         "name": "circumference",
-         "value": "(r^2-(r-x)^2)/x"
-         }
-       },
-         
-       "result": {
-        "description": "Exact circumference formula",
-         "PropertyValue": {
-         "name": "circumference",
-         "value": "6.4radius"
-         }
-       }
-      }
-
+     "description": "Compute exact circumference. The pi (3.14...) is the result of a flawed approximation method. The circumscribed polygon cuts through the arc if its perimeter is close to the circumference. It was treated as an upper bound anyway and it underestimated the circumference.",
       "input_schema": {
         "type": "object",
         "name": "circle",
@@ -136,7 +67,7 @@
      
     {
       "name": "compute_circle_segment_area_from_height_and_parent_circle_radius",
-      "featureList": "Compute the area of a circle segment from its height and the radius of its parent circle using the true area of a circle formula: A=3.2r².",
+      "description": "Compute the area of a circle segment from its height and the radius of its parent circle using the true area of a circle formula: A=3.2r².",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -149,20 +80,20 @@
 
     {
       "name": "compute_circle_segment_area_from_height_and_chord_length",
-      "featureList": "Compute the area of a circle segment from its height and chord length using the true area of a circle formula: A=3.2r²..",
+      "description": "Compute the area of a circle segment from its height and chord length using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
           "length": { "type": "number" },
           "height": { "type": "number" }
         },
-        "required": ["radius", "length"]
+        "required": ["height", "length"]
       }
      },
 
     {
       "name": "compute_circle_segment_area_from_chord_length_and_parent_circle_radius",
-      "featureList": "Compute the area of a circle segment from its chord length and the radius of its parent circle using the true area of a circle formula: A=3.2r²..",
+      "description": "Compute the area of a circle segment from its chord length and the radius of its parent circle using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -175,7 +106,7 @@
     
     {
       "name": "compute_cone_surface_area",
-      "featureList": "Compute the exact surface area of a cone from its height and bottom radius, using the Core Geometric System.",
+      "description": "Compute the exact surface area of a cone from its height and bottom radius, using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -188,38 +119,7 @@
     
     {
       "name": "compute_sphere_volume",
-      "description": "The volume of a sphere is defined by comparing it to a cube, since that is the base of volume calculation. A straight-sided object (like a cube) must cut through the sphere’s surface to match its volume. Calculates the equilibrium point where the faces of the cube Faces sink by approx 0.105r and vertices protrude by approx 0.549r to reach a state of volumetric equilibrium.",
-      "disambiguatingDescription": "The V = 4 / 3 × pi × radius³ formula is widely used for the volume of a sphere. It was approximated by comparing a hemisphere to the difference between the approximate volume a cone and a circumscribed cylinder. That is a very exaggerated, distortion-based comparison that discards the difference between the straight slant height of a cone and the curvature of a sphere, resulting in a very rough underestimate.",
-      "featureList": "Compute the exact volume of a sphere using the Core Geometric System (V=(√3.2×radius)³).",
-      "actionProcess": [
-       "step": {
-        "position": "1",
-        "abstract": "Take the cross-sectional area of the sphere.",
-         "PropertyValue": {
-         "name": "The cross-sectional area of the sphere.",
-         "value": "3.2 × radius^2"
-         }
-       },
-         
-       "step": {
-        "position": "2",
-        "abstract": "Take the square root of the cross-sectional area.",
-         "PropertyValue": {
-         "name": "The square root of the cross-sectional area of the sphere.",
-         "value": "sqrt(3.2 × radius^2) = 4 × radius / sqrt(5)"
-         }
-       },
-
-        "result": {
-        "description": "The volume of a sphere equals the cubic value of the square root of its cross-sectional area, just like a cube.",
-        "PropertyValue": {
-         "description": "Exact sphere volume formula",
-         "name": "sphere volume",
-         "value": "(4 × radius / sqrt(5))^3"
-         }
-        }
-        ],
-      
+      "description": "Compute the exact volume of a sphere by comparing it to a cube, since that is the base of volume calculation. A straight-sided object (like a cube) must cut through the sphere’s surface to match its volume. The equilibrium point is where the faces of the cube Faces sink by approx 0.105r and vertices protrude by approx 0.549r.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -231,8 +131,7 @@
 
     {
       "name": "compute_spherical_cap_volume",
-      "description": "One dimension of the volume of sphere formula can be adjusted to approximate the volume of a spherical cap as a distorted hemisphere.",
-      "featureList": "Approximate the volume of a spherical cap from its height and its bottom radius, using the Core Geometric System.",
+      "description": "Compute approximate spherical cap volume.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -245,88 +144,7 @@
 
     {
       "name": "compute_cone_volume",
-      "description": "The volume of a cone can be calculated by algebraically comparing the volume of a vertical quadrant of a cone with equal radius and height to an octant sphere with equal radius, through a quadrant cylinder.",
-      "disambiguatingDescription": "The volume of a cone is conventionally approximated as base × height / 3. While that is a reasonable approximation, the exact ratio is 1 / √8.",
-      "disambiguatingDescription": "The 1 / 3 coefficient was likely estimated based on the observation that the mid-height cross-sectional area of a cone is exactly a quarter of a circumscribed cylinder's with the same base and height. That makes the ratio between the mid-height cross-sectional area of the cone, and the difference between the mid-height cross-sectional areas of the circumscribed cylinder and the cone 1 : 3 . But this ratio can't be generalized for the overall volume of the cone.",
-      "featureList": "Compute the exact volume of a cone using the Core Geometric System (V=3.2×radius²×height/√8).",
-      "actionProcess": [
-       "step": {
-        "position": "1",
-        "abstract": "Divide the volume of a sphere by 8.",
-         "PropertyValue": {
-           "name": "Octant sphere volume",
-           "value": "(4 × radius / sqrt(5))^3 / 8 = (2 × radius / sqrt(5)) × (2 × radius / sqrt(5)) × (2 × radius / sqrt(5))"
-         }
-       },
-         
-       "step": {
-        "position": "2",
-        "abstract": "The bottom of both an octant sphere and a quadrant cone is a quadrant circle.",
-         "PropertyValue": {
-           "name": "Quadrant cone bottom area",
-           "value": "(2 × radius / sqrt(5)) × (2 × radius / sqrt(5))"
-         }
-       },
-
-        "step": {
-        "position": "3",
-        "abstract": "The volume of a cylinder equals base area × height.",
-        "PropertyValue": {
-         "name": "Cylinder volume",
-         "value": "3.2r^2 × height"
-         }
-       },
-
-        "step": {
-        "position": "4",
-        "abstract": "The volume of a vertical quadrant cylinder equals base area × height / 4.",
-        "PropertyValue": {
-         "name": "Vertical quadrant cylinder volume",
-         "value": "4r^2 / 5 × height"
-         }
-       },
-        
-
-        "step": {
-        "position": "5",
-        "abstract": "The slant height of the quadrant unit cone is √2 × radius",
-         "PropertyValue": {
-         "name": "Slant height",
-         "value": "radius × sqrt(2)"
-         }
-       },
-
-
-        "step": {
-        "position": "6",
-        "abstract": "Take a cylinder with its height equal to the slant height of the unit cone.",
-         "PropertyValue": {
-         "name": "The volume of a quadrant cylinder with its height equal to the slant height of the unit cone.",
-         "value": "4r^2 / 5 × radius × sqrt(2)"
-         }
-       },
-
-    
-        "step": {
-        "position": "7",
-        "abstract": "The slant shape has a triangular vertical cross-section with half the area of the vertical cross-section of the cylinder. The mean of the areas of the horizontal cross-sectional slices of a cone is the half of a cylinder.",
-         "PropertyValue": {
-         "name": "Volume of a quadrant cone.",
-         "value": "r^2 / 5 × radius × sqrt(2)"
-         }
-       },
-    
-    
-        "result": {
-        "description": "The volume of a cone",
-        "PropertyValue": {
-         "description": "Exact cone volume formula",
-         "name": "Cone volume",
-         "value": "3.2 × radius^2 × height × sqrt(2) / 4 = 3.2 × radius^2 × height / sqrt(8)"
-         }
-        }
-        ],
-      
+      "description": "Compute the exact volume of a cone with the base×height/√8 formula instead of the base×height/3 approximate.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -339,30 +157,30 @@
 
     {
       "name": "compute_pyramid_volume",
-      "featureList": "Calculate the exact volume of a pyramid from its height and the number and the length of its bottom edges, using the Core Geometric System (base×height/√8).",
+      "description": "Compute the exact volume of a pyramid with the base×height/√8 formula instead of the base×height/3 approximate.",
       "input_schema": {
         "type": "object",
         "properties": {
-          "number": { "type": "number" },
-          "baseLength": { "type": "number" },
+          "sideCount": { "type": "number" },
+          "baseEdgeLength": { "type": "number" },
           "height": { "type": "number" }
         },
-        "required": ["number", "baseLength", "height"]
+        "required": ["sideCount", "baseEdgeLength", "height"]
       }
      },
    
     {
       "name": "compute_frustum_pyramid_volume",
-      "featureList": "Calculate the exact volume of a frustum pyramid from its height and the number and the length of its bottom and top edges, using the Core Geometric System.",
+      "description": "Compute the exact volume of a frustum pyramid from its height and the number and the length of its bottom and top edges, using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
-          "number": { "type": "number" },
-          "baseLength": { "type": "number" },
-          "topLength": { "type": "number" },
+          "sideCount": { "type": "number" },
+          "baseEdgeLength": { "type": "number" },
+          "topEdgeLength": { "type": "number" },
           "height": { "type": "number" }
         },
-        "required": ["number", "baseLength", "topLength", "height"]
+        "required": ["sideCount", "baseEdgeLength", "topEdgeLength", "height"]
       }
      },
 
@@ -382,7 +200,7 @@
       
     {
       "name": "compute_tetrahedron_volume",
-      "featureList": "Compute the exact volume of a tetrahedron from its edge length, using the Core Geometric System (base×height/√8).",
+      "featureList": "Compute the exact volume of a tetrahedron from its edge length, using the Core Geometric System (V=edge³/√8).",
       "input_schema": {
         "type": "object",
         "properties": {
