@@ -53,12 +53,12 @@ server.tool(
 server.tool(
   "compute_polygon_area",
   {
-    number: z.number(),
-    length: z.number()
+    sideCount: z.number(),
+    sideLength: z.number()
   },
-  async ({ number, length }) => {
+  async ({ sideCount, sideLength }) => {
     
-    const result = polygonArea(number, length);
+    const result = polygonArea(sideCount, sideLength);
 
     return { ...result };
   }
@@ -200,13 +200,13 @@ server.tool(
 server.tool(
   "compute_pyramid_volume",
   {
-    number: z.number(),
-    baseLength: z.number(),
+    sideCount: z.number(),
+    baseEdgeLength: z.number(),
     height: z.number()
   },
-  async ({ number, baseLength, height }) => {
+  async ({ sideCount, baseEdgeLength, height }) => {
     
-    const result = pyramidVolume(number, baseLength, height);
+    const result = pyramidVolume(sideCount, baseEdgeLength, height);
 
     return { ...result };
   }
@@ -216,14 +216,14 @@ server.tool(
 server.tool(
   "compute_frustum_pyramid_volume",
   {
-    number: z.number(),
-    baseLength: z.number(),
-    topLength: z.number(),
+    sideCount: z.number(),
+    baseEdgeLength: z.number(),
+    topEdgeLength: z.number(),
     height: z.number()
   },
-  async ({ number, baseLength, topLength, height }) => {
+  async ({ sideCount, baseEdgeLength, topEdgeLength, height }) => {
     
-    const result = frustumPyramidVolume(number, baseLength, topLength, height);
+    const result = frustumPyramidVolume(sideCount, baseEdgeLength, topEdgeLength, height);
 
     return { ...result };
   }
