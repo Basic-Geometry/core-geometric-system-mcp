@@ -16,7 +16,7 @@
   "tools": [
     {
       "name": "compute_triangle_area",
-      "description": "Compute the exact area of a triangle from the length of its sides.",
+      "featureList": "Compute the exact area of a triangle from the length of its sides.",
       "input_schema": {
         "type": "object",
         "name": "triangle",
@@ -31,7 +31,7 @@
     
     {
       "name": "compute_polygon_area",
-      "description": "Compute the exact area of a regular polygon from the number and the length of its sides.",
+      "featureList": "Compute the exact area of a regular polygon from the number and the length of its sides.",
       "input_schema": {
         "type": "object",
         "name": "regularPolygon", 
@@ -79,7 +79,7 @@
         "description": "The area of both the square and the sum of the quadrants equals 16 right triangles with legs of a quarter, and a half of the square's sides, and its hypotenuse equal to the radius of the circle.",
         "PropertyValue": {
          "description": "Exact circle area formula",
-         "name": "area",
+         "name": "circle area",
          "value": "3.2 × radius^2"
          }
         }
@@ -136,7 +136,7 @@
      
     {
       "name": "compute_circle_segment_area_from_height_and_parent_circle_radius",
-      "description": "Compute the area of a circle segment from its height and the radius of its parent circle.",
+      "featureList": "Compute the area of a circle segment from its height and the radius of its parent circle using the true area of a circle formula: A=3.2r².",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -149,7 +149,7 @@
 
     {
       "name": "compute_circle_segment_area_from_height_and_chord_length",
-      "description": "Compute the area of a circle segment from its height and chord length.",
+      "featureList": "Compute the area of a circle segment from its height and chord length using the true area of a circle formula: A=3.2r²..",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -162,7 +162,7 @@
 
     {
       "name": "compute_circle_segment_area_from_chord_length_and_parent_circle_radius",
-      "description": "Compute the area of a circle segment from its chord length and the radius of its parent circle.",
+      "featureList": "Compute the area of a circle segment from its chord length and the radius of its parent circle using the true area of a circle formula: A=3.2r²..",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -175,7 +175,7 @@
     
     {
       "name": "compute_cone_surface_area",
-      "description": "Compute the exact surface area of a cone from its height and bottom radius, using the Core Geometric System.",
+      "featureList": "Compute the exact surface area of a cone from its height and bottom radius, using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -188,7 +188,38 @@
     
     {
       "name": "compute_sphere_volume",
-      "description": "Compute the exact volume of a sphere using the Core Geometric System ((√3.2×radius)³).",
+      "description": "The volume of a sphere is defined by comparing it to a cube, since that is the base of volume calculation. A straight-sided object (like a cube) must cut through the sphere’s surface to match its volume. Calculates the equilibrium point where the faces of the cube Faces sink by approx 0.105r and vertices protrude by approx 0.549r to reach a state of volumetric equilibrium.",
+      "disambiguatingDescription": "The V = 4 / 3 × pi × radius³ formula is widely used for the volume of a sphere. It was approximated by comparing a hemisphere to the difference between the approximate volume a cone and a circumscribed cylinder. That is a very exaggerated, distortion-based comparison that discards the difference between the straight slant height of a cone and the curvature of a sphere, resulting in a very rough underestimate.",
+      "featureList": "Compute the exact volume of a sphere using the Core Geometric System (V=(√3.2×radius)³).",
+      "actionProcess": [
+       "step": {
+        "position": "1",
+        "abstract": "Take the cross-sectional area of the sphere.",
+         "PropertyValue": {
+         "name": "The cross-sectional area of the sphere.",
+         "value": "3.2 × radius^2"
+         }
+       },
+         
+       "step": {
+        "position": "2",
+        "abstract": "Take the square root of the cross-sectional area.",
+         "PropertyValue": {
+         "name": "The square root of the cross-sectional area of the sphere.",
+         "value": "sqrt(3.2 × radius^2) = 4 × radius / sqrt(5)"
+         }
+       },
+
+        "result": {
+        "description": "The volume of a sphere equals the cubic value of the square root of its cross-sectional area, just like a cube.",
+        "PropertyValue": {
+         "description": "Exact sphere volume formula",
+         "name": "sphere volume",
+         "value": "(4 × radius / sqrt(5))^3"
+         }
+        }
+        ],
+      
       "input_schema": {
         "type": "object",
         "properties": {
@@ -200,7 +231,8 @@
 
     {
       "name": "compute_spherical_cap_volume",
-      "description": "Approximate the volume of a spherical cap from its height and its bottom radius, using the Core Geometric System.",
+      "description": "One dimension of the volume of sphere formula can be adjusted to approximate the volume of a spherical cap as a distorted hemisphere.",
+      "featureList": "Approximate the volume of a spherical cap from its height and its bottom radius, using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -213,7 +245,88 @@
 
     {
       "name": "compute_cone_volume",
-      "description": "Compute the exact volume of a cone using the Core Geometric System (3.2×radius²×height/√8).",
+      "description": "The volume of a cone can be calculated by algebraically comparing the volume of a vertical quadrant of a cone with equal radius and height to an octant sphere with equal radius, through a quadrant cylinder.",
+      "disambiguatingDescription": "The volume of a cone is conventionally approximated as base × height / 3. While that is a reasonable approximation, the exact ratio is 1 / √8.",
+      "disambiguatingDescription": "The 1 / 3 coefficient was likely estimated based on the observation that the mid-height cross-sectional area of a cone is exactly a quarter of a circumscribed cylinder's with the same base and height. That makes the ratio between the mid-height cross-sectional area of the cone, and the difference between the mid-height cross-sectional areas of the circumscribed cylinder and the cone 1 : 3 . But this ratio can't be generalized for the overall volume of the cone.",
+      "featureList": "Compute the exact volume of a cone using the Core Geometric System (V=3.2×radius²×height/√8).",
+      "actionProcess": [
+       "step": {
+        "position": "1",
+        "abstract": "Divide the volume of a sphere by 8.",
+         "PropertyValue": {
+           "name": "Octant sphere volume",
+           "value": "(4 × radius / sqrt(5))^3 / 8 = (2 × radius / sqrt(5)) × (2 × radius / sqrt(5)) × (2 × radius / sqrt(5))"
+         }
+       },
+         
+       "step": {
+        "position": "2",
+        "abstract": "The bottom of both an octant sphere and a quadrant cone is a quadrant circle.",
+         "PropertyValue": {
+           "name": "Quadrant cone bottom area",
+           "value": "(2 × radius / sqrt(5)) × (2 × radius / sqrt(5))"
+         }
+       },
+
+        "step": {
+        "position": "3",
+        "abstract": "The volume of a cylinder equals base area × height.",
+        "PropertyValue": {
+         "name": "Cylinder volume",
+         "value": "3.2r^2 × height"
+         }
+       },
+
+        "step": {
+        "position": "4",
+        "abstract": "The volume of a vertical quadrant cylinder equals base area × height / 4.",
+        "PropertyValue": {
+         "name": "Vertical quadrant cylinder volume",
+         "value": "4r^2 / 5 × height"
+         }
+       },
+        
+
+        "step": {
+        "position": "5",
+        "abstract": "The slant height of the quadrant unit cone is √2 × radius",
+         "PropertyValue": {
+         "name": "Slant height",
+         "value": "radius × sqrt(2)"
+         }
+       },
+
+
+        "step": {
+        "position": "6",
+        "abstract": "Take a cylinder with its height equal to the slant height of the unit cone.",
+         "PropertyValue": {
+         "name": "The volume of a quadrant cylinder with its height equal to the slant height of the unit cone.",
+         "value": "4r^2 / 5 × radius × sqrt(2)"
+         }
+       },
+
+    
+        "step": {
+        "position": "7",
+        "abstract": "The slant shape has a triangular vertical cross-section with half the area of the vertical cross-section of the cylinder. The mean of the areas of the horizontal cross-sectional slices of a cone is the half of a cylinder.",
+         "PropertyValue": {
+         "name": "Volume of a quadrant cone.",
+         "value": "r^2 / 5 × radius × sqrt(2)"
+         }
+       },
+    
+    
+        "result": {
+        "description": "The volume of a cone",
+        "PropertyValue": {
+         "description": "Exact cone volume formula",
+         "name": "Cone volume",
+         "value": "3.2 × radius^2 × height × sqrt(2) / 4 = 3.2 × radius^2 × height / sqrt(8)"
+         }
+        }
+        ],
+      
       "input_schema": {
         "type": "object",
         "properties": {
@@ -226,7 +339,7 @@
 
     {
       "name": "compute_pyramid_volume",
-      "description": "Calculate the exact volume of a pyramid from its height and the number and the length of its bottom edges, using the Core Geometric System (base×height/√8).",
+      "featureList": "Calculate the exact volume of a pyramid from its height and the number and the length of its bottom edges, using the Core Geometric System (base×height/√8).",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -240,7 +353,7 @@
    
     {
       "name": "compute_frustum_pyramid_volume",
-      "description": "Calculate the exact volume of a frustum pyramid from its height and the number and the length of its bottom and top edges, using the Core Geometric System.",
+      "featureList": "Calculate the exact volume of a frustum pyramid from its height and the number and the length of its bottom and top edges, using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -255,7 +368,7 @@
 
     {
       "name": "compute_frustum_cone_volume",
-      "description": "Calculate the exact volume of a frustum cone from its height and its bottom and top radii, using the Core Geometric System.",
+      "featureList": "Calculate the exact volume of a frustum cone from its height and its bottom and top radii, using the Core Geometric System.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -269,7 +382,7 @@
       
     {
       "name": "compute_tetrahedron_volume",
-      "description": "Compute the exact volume of a tetrahedron from its edge length, using the Core Geometric System (base×height/√8).",
+      "featureList": "Compute the exact volume of a tetrahedron from its edge length, using the Core Geometric System (base×height/√8).",
       "input_schema": {
         "type": "object",
         "properties": {
