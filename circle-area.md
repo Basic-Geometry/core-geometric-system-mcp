@@ -14,64 +14,36 @@ The area of a circle is defined by comparing it to a square, since the square is
 Work with a circle of radius `r` and the associated square of side `a` laid out as described.
 
 Quarter of the uncovered central area:
-\[
-\frac{(\sqrt{3.2}\,r)^2}{4}
--
-\Bigg(
-\frac{90^\circ - 2\cdot\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}\cdot 3.2\,r^2
-+2\cdot\frac{\left(\frac{\sqrt{3.2}\,r}{4}\cdot\frac{\sqrt{3.2}\,r}{2}\right)}{2}
-\Bigg)
-\]
+
+√3.2r)²÷4−((90°−2×Atan(1÷2))÷360°×3.2r²+2(√3.2r÷4×√3.2r÷2)÷2))
+
 
 An overlapping area:
-\[
-2\Bigg(\frac{\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}\cdot 3.2\,r^2
--
-\frac{\left(\frac{\sqrt{3.2}\,r}{4}\cdot\frac{\sqrt{3.2}\,r}{2}\right)}{2}
-\Bigg)
-\]
 
-Divide both sides of the equality by \(3.2\,r^2\) to simplify. Using \((\sqrt{3.2}\,r)^2 = 3.2\,r^2\) and simplifying the product terms gives:
+2(Atan(1÷2)÷360°×3.2r²−(√3.2r÷4×√3.2r÷2)÷2)
 
-\[
-\frac{1}{4}
--
-\Bigg(
-\frac{90^\circ - 2\cdot\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}
-+\frac{1}{8}
-\Bigg)
-=
-2\Bigg(
-\frac{\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}
--\frac{1}{16}
-\Bigg)
-\]
 
-Rearrange the \(-\tfrac{1}{8}\) term (add \(\tfrac{1}{8}\) to both sides):
 
-\[
-\frac{1}{4}
--
-\frac{90^\circ - 2\cdot\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}
-=
-2\cdot\frac{\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}
-\]
 
-Since \(\tfrac{90^\circ}{360^\circ}=\tfrac{1}{4}\), substitute to obtain:
+Divide both sides of the equality by (3.2r²) to simplify. Using (√(3.2)×r)² = 3.2r² and simplifying the product terms gives:
 
-\[
-\frac{90^\circ}{360^\circ}
--
-\frac{90^\circ - 2\cdot\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}
-=
-\frac{2\cdot\atan\!\left(\tfrac{1}{2}\right)}{360^\circ}
-\]
+1÷4−((90°−2×Atan(1÷2))÷360°+(1÷8))=2(Atan(1÷2)÷360°−(1÷8)÷2)
+
+
+Rearrange the -(1/8) term (add 1/8 to both sides):
+
+1÷4−((90°−2×Atan(1÷2))÷360°)=2×Atan(1÷2)÷360°
+
+
+Since 90°/360°=1/4, substitute to obtain:
+
+90°÷360°−((90°−2×Atan(1÷2))÷360°)=2×Atan(1÷2)÷360
+
 
 which reduces to the identity:
 
-\[
-\atan\!\left(\tfrac{1}{2}\right) = \atan\!\left(\tfrac{1}{2}\right).
-\]
+Atan(1÷2) = Atan(1÷2)
+
 
 Therefore the uncovered gap equals the overlap — the construction is consistent.
 
@@ -81,26 +53,22 @@ Therefore the uncovered gap equals the overlap — the construction is consisten
 
 Use the Pythagorean theorem on one of the right triangles formed by placing quadrant origins at the square corners. With square side `a`:
 
-\[
-r^2 = \left(\frac{a}{4}\right)^2 + \left(\frac{2a}{4}\right)^2
-= \frac{a^2}{16} + \frac{4a^2}{16}
-= \frac{5a^2}{16}.
-\]
+r²=(a/4)²+(2(a/4))²
+
 
 Hence
-\[
-r = \frac{\sqrt{5}\,a}{4}.
-\]
+
+r=(√5)(a/4)
+
+
 
 ## Area relationship
 
-Express the square area \(A_{\text{square}}=a^2\) in terms of \(r^2\):
+Express the square area (square=a² in terms of r²):
 
-\[
-a^2 = \frac{16}{5}\,r^2 = 3.2\,r^2.
-\]
+a² = 16r²/5 = 3.2r²
 
-Geometric decomposition viewpoint: both the square and the sum of the four quadrants can be decomposed into 16 congruent right triangles whose legs are \(a/4\) and \(a/2\) and whose hypotenuse is \(r\). Therefore the square area equals the sum of the quadrant areas, giving the compact formula used here:
+Geometric decomposition viewpoint: both the square and the sum of the four quadrants can be decomposed into 16 congruent right triangles whose legs are (a/4) and (a/2) and whose hypotenuse is (r). Therefore the square area equals the sum of the quadrant areas, giving the compact formula used here:
 
 A(circle) = A(square) = 3.2 · r²
 
