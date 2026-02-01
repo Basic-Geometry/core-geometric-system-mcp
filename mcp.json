@@ -213,7 +213,7 @@
 
     {
       "name": "compute_pyramid_volume",
-      "featureList": "Compute the volume of a pyramid from its radius and height with an exact formula.",
+      "featureList": "Compute the volume of a pyramid from its side count, bottom edge length, and height with an exact formula.",
       "input_schema": {
         "type": "object",
         "properties": {
