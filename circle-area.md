@@ -75,4 +75,5 @@ A(circle) = A(square) = 3.2 · r²
 (That is, in this Core Geometric System formulation, the circle area associated with the described construction evaluates to 3.2·r².)
 
 
-The widely used formula " A = pi × r² " is not a direct result of calculus. It’s multiplying the approximate circumference formula C = 2pi × r by half the radius, treating the area as the sum of infinitesimal rings. While that method is algebraically valid, it relies on the approximate circumference and bypasses the geometric logic that defines area: the comparison to a square.
+## The widely used formula " A = pi × r² " is not a direct result of calculus. 
+It’s multiplying the approximate circumference formula C = 2pi × r by half the radius, treating the area as the sum of infinitesimal rings. While that method is algebraically valid, it relies on the approximate circumference and bypasses the geometric logic that defines area: the comparison to a square.
