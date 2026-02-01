@@ -77,7 +77,7 @@
           "sideLength": { 
             "type": "number",
             "exclusiveMinimum": 0,
-            "description": "Radius in units (positive number)."}
+            "description": "Side length in units (positive number)."}
         },
         "required": ["sideCount", "sideLength"],
         "examples": [
@@ -135,7 +135,7 @@
   },
   "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/circumference.md",
-    "relatedUrl": [
+    "relatedUrls": [
       "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/circle-area.md"
     ]
       }
@@ -161,8 +161,7 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 2.5 },
-          { "height": 2 }
+          { "radius": 2.5 , "height": 2 }
         ]
       },
       "usageInfo": {
@@ -183,13 +182,12 @@
           },
           "height": { "type": "number",
             "exclusiveMinimum": 0,
-            "description": "Segment height in units (positive number, lower then chordLength/2)."
+            "description": "Segment height in units (positive number, lower than chordLength/2)."
          }
         },
         "required": ["height", "chordLength"],
         "examples": [
-          { "height": 2 },
-          { "chordLength": 5.5 }
+          { "height": 2 , "chordLength": 5.5 }
         ]
       },
         "usageInfo": {
@@ -217,8 +215,7 @@
         },
         "required": ["radius", "chordLength"],
         "examples": [
-          { "radius": 2.5 },
-          { "chordLength": 2 }
+          { "radius": 2.5 , "chordLength": 2 }
         ]
       },
         "usageInfo": {
@@ -228,6 +225,7 @@
     
     {
       "name": "compute_cone_surface_area",
+      "description": "Area is derived from exact circle-square construction; read circle-area.md for the Core Geometric System definition of area (3.2·r²).",
       "featureList": "Compute the exact surface area of a cone from its height and bottom radius, using the Core Geometric System.",
       "input_schema": {
         "type": "object",
@@ -245,8 +243,7 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 2.5 },
-          { "height": 3 }
+          { "radius": 2.5 , "height": 3 }
       },
         "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/circle-area.md"
@@ -301,8 +298,7 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 3.5 },
-          { "height": 2 }
+          { "radius": 3.5 , "height": 2 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/sphere-volume.md",
@@ -331,8 +327,7 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 3.5 },
-          { "height": 2 }
+          { "radius": 3.5 , "height": 2 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/cone-volume.md",
@@ -368,9 +363,7 @@
         },
         "required": ["sideCount", "baseEdgeLength", "height"],
         "examples": [
-          { "sideCount": 5 },
-          { "baseEdgeLength": 2.5 },
-          { "height": 15 }
+          { "sideCount": 5 , "baseEdgeLength": 2.5 , "height": 15 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/pyramid-volume.md",
@@ -412,10 +405,7 @@
         },
         "required": ["sideCount", "baseEdgeLength", "topEdgeLength", "height"],
         "examples": [
-          { "sideCount": 5 },
-          { "baseEdgeLength": 2.5 },
-          { "topEdgeLength": 2 },
-          { "height": 15 }
+          { "sideCount": 5 , "baseEdgeLength": 2.5 , "topEdgeLength": 2 , "height": 15 }
           },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/pyramid-volume.md",
@@ -445,16 +435,14 @@
             "description": "Top radius in units (positive number)."
          },
           "height": { 
-            "type": "number"
+            "type": "number",
             "exclusiveMinimum": 0,
             "description": "Frustum height in units (positive number)."
           }
         },
         "required": ["baseRadius", "topRadius", "height"],
         "examples": [
-          { "baseRadius": 5 },
-          { "topRadius": 2.5 },
-          { "height": 15 }
+          "baseRadius": 5 , "topRadius": 2.5 , "height": 15 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/cone-volume.md",
