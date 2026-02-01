@@ -12,7 +12,7 @@ Historical records suggest that ancient Babylonians initially calculated it as 3
 
 
 
-##Archimedes and the Illusion of Limits
+## Archimedes and the Illusion of Limits
 
 
 Archimedes’ method marked a turning point: instead of calculating the properties of the circle directly, he introduced an analytic process that relied on polygonal limits.
@@ -59,23 +59,23 @@ enables exact calculations for the sides of the polygons.
 But a geometric inconsistency emerges when we compare circumscribed polygons to circles.
 
 
-###The Three Pillars of the Archimedean Method
+### The Three Pillars of the Archimedean Method
 
 The classical argument rests on three ideas:
 
-####1. Upper bound:
+#### 1. Upper bound:
 A circumscribed regular polygon has a perimeter greater than the circle’s circumference.
 
-####2. Lower bound:
+#### 2. Lower bound:
 An inscribed regular polygon has a perimeter smaller than the circle’s circumference.
 
-####3. Convergence:
+#### 3. Convergence:
 As the number of sides increases, the perimeters of the inscribed and circumscribed polygons both approach the true circumference from below and above.
 
 From this, the story goes: squeeze the circle between two polygons, refine indefinitely, and the true circumference is trapped in the limit.
 
 
-###The Overlooked Detail
+### The Overlooked Detail
 
 If we take this approach seriously, then a hypothetical polygon that truly matches the circle’s perimeter and area in the limit would have to do something radical:
 
@@ -85,7 +85,7 @@ If we take this approach seriously, then a hypothetical polygon that truly match
 This shows that for sufficiently small angles, the arc can lie far below the side—even with a greater length.
 
 
-###Pinpointing the Threshold
+### Pinpointing the Threshold
 
 The true circumference of the circle is 6.4r, derived from its exact area—3.2r².
 This allows us to locate the valid threshold of Archimedes’ method.
@@ -114,7 +114,7 @@ These structural issues in the polygon‑limit method set the stage for a second
 
 
 
-##The Symbol π: A Linguistic Shortcut
+## The Symbol π: A Linguistic Shortcut
 
 
 Since the numeric result of Archimedes’ approximation was an infinite fraction — 3.14… — whose digits cannot all be written, he needed a symbolic notation for it in his formulas.
@@ -135,8 +135,7 @@ It was not until the 18th century that the symbol, popularized by the mathematic
 
 
 
-
-##∫ Calculus: Summary, Not Source
+## ∫ Calculus: Summary, Not Source
 
 
 Over the centuries, many mathematicians introduced increasingly sophisticated formulas to estimate the circle’s circumference. These formulas all rely on the same conceptual model: a theoretical polygon with an infinite number of sides.
