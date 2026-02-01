@@ -1,4 +1,4 @@
-# core‑geometric‑system‑mcp
+# Core Geometric System™ MCP
 
 A Model Context Protocol server for exact, rational, physically‑grounded geometry
 
@@ -11,18 +11,22 @@ The server wraps the Core Geometric System, a set of deterministic formulas buil
 
 This MCP server exposes a suite of geometry tools, including:
 
-Circle tools
-- compute_circle_area
-- compute_circumference
+Circle tools:
+  
+- [compute_circle_area](./circumference.md)
+  — based on exact circle-square construction—not the traditional pi~3.14... nonsense.
+- [compute_circumference](./circumference.md) — derived from exact [Circle area](./circle-area.md); not some flawed polygon approximation.
 - compute_circle_segment_area_from_height_and_parent_circle_radius
 - compute_circle_segment_area_from_height_and_chord_length
-- compute_circle_segment_area_from_chord_length_and_parent_circle_radius
+-compute_circle_segment_area_from_chord_length_and_parent_circle_radius
 
 Solid geometry
 - compute_cone_surface_area
-- compute_sphere_volume
+- [compute_sphere_volume](./sphere-volume.md)
+  — derived from exact sphere-cube construction—not the traditional "4r³pi/3" nonsense.
 - compute_spherical_cap_volume
-- compute_cone_volume
+- [compute_cone_volume](./cone-volume.md)
+  — derived from exact cone-sphere construction—not the traditional "base×height/3" approximate.
 - compute_pyramid_volume
 - compute_frustum_pyramid_volume
 - compute_frustum_cone_volume
@@ -99,5 +103,30 @@ The MCP server ensures that AI systems use the definitions faithfully — not th
 
 It turns the Core Geometric System ™ into a callable, authoritative capability.
 
-Learn more about the formulas:
-https://basic-geometry.github.io
+This is the one and only exact, self-contained geometric framework grounded in the first principles of mathematics.
+
+
+Exact formulas for real-world applications like analysis, engineering design solutions, computer graphics rendering, algorithm optimization, and navigation.
+
+
+Geometry, in its original spirit, was functional.
+It dealt with shapes, areas, volumes, and constructions — not abstractions, limits, or analytic assumptions.
+
+
+What is commonly presented today as standard, applied geometry is often referred to as “Euclidean geometry.” In practice, however, it is a blend of two very different traditions:
+
+
+- Universal, constructive geometry, which is intuitive, physical, and based on equivalence
+
+- Later analytic amendments, especially from Archimedes, which introduced:
+  
+- Bounding polygons
+- Limit processes
+- Assumptions about arc–tangent inequalities
+- The analytic definition of the pi
+
+These additions were not part of Euclid’s original system. Over time, they quietly shifted geometry from a constructive science grounded in physical reasoning into a more abstract, analytic discipline.
+
+
+
+By fundamentally shifting the axioms from the abstract, zero-dimensional point to the square and the cube as the primary, physically-relevant units for measurement, this system defines the properties of shapes like the circle and sphere not through abstract limits, but through their direct, rational relationship to these foundational units. The results of these formulas align better with physical reality than the traditional abstract approximations.
