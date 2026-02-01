@@ -76,7 +76,8 @@
     "examples": [
       { "radius": 2.5 }
     ]
-  }
+  },
+  "usageInfo": "docs/circle-area.md"
     },
 
     {
@@ -96,7 +97,8 @@
     "examples": [
       { "radius": 2.5 }
     ]
-  }
+  },
+  "usageInfo": "docs/circumference.md"
     },
      
     {
