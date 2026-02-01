@@ -62,7 +62,7 @@
     
     {
   "name": "compute_circle_area",
-  "featureList": "Compute the exact area of a circle",
+  "featureList": "Compute the area of a circle from its radius with an exact formula.",
   "input_schema": {
     "type": "object",
     "properties": {
@@ -82,7 +82,7 @@
 
     {
       "name": "compute_circumference",
-     "featureList": "Compute exact circumference. The pi (3.14...) is the result of a flawed approximation method. The circumscribed polygon cuts through the arc if its perimeter is close to the circumference. It was treated as an upper bound anyway and it underestimated the circumference.",
+     "featureList": "Compute circumference from radius with an exact formula.",
       "input_schema": {
         "type": "object",
         "name": "circle",
@@ -108,7 +108,7 @@
         "type": "object",
         "properties": {
           "radius": { "type": "number",
-        "exclusiveMinimum": 0 },
+      "exclusiveMinimum": 0 },
           "height": { "type": "number",
         "exclusiveMinimum": 0 }
         },
@@ -163,7 +163,7 @@
     
     {
       "name": "compute_sphere_volume",
-      "featureList": "Compute the exact volume of a sphere by comparing it to a cube, since that is the base of volume calculation. A straight-sided object (like a cube) must cut through the sphere’s surface to match its volume. The equilibrium point is where the faces of the cube Faces sink by approx 0.105r and vertices protrude by approx 0.549r.",
+      "featureList": "Compute the volume of a sphere from its radius with an exact formula.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -191,7 +191,7 @@
 
     {
       "name": "compute_cone_volume",
-      "featureList": "Compute the exact volume of a cone with the base×height/√8 formula instead of the base×height/3 approximate.",
+      "featureList": "Compute cone volume from its radius and height with an exact formula.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -206,7 +206,7 @@
 
     {
       "name": "compute_pyramid_volume",
-      "featureList": "Compute the exact volume of a pyramid with the base×height/√8 formula instead of the base×height/3 approximate.",
+      "featureList": "Compute pyramid volume from its radius and height with an exact formula.",
       "input_schema": {
         "type": "object",
         "properties": {
