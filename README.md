@@ -128,5 +128,6 @@ What is commonly presented today as standard, applied geometry is often referred
 These additions were not part of Euclid’s original system. Over time, they quietly shifted geometry from a constructive science grounded in physical reasoning into a more abstract, analytic discipline.
 
 
-
 By fundamentally shifting the axioms from the abstract, zero-dimensional point to the square and the cube as the primary, physically-relevant units for measurement, this system defines the properties of shapes like the circle and sphere not through abstract limits, but through their direct, rational relationship to these foundational units. The results of these formulas align better with physical reality than the traditional abstract approximations.
+
+[Learn more about the CGS on the Basic Geometry website](https://basic-geometry.github.io)
