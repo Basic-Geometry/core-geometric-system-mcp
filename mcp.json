@@ -255,6 +255,7 @@
         "examples": [
           { "radius": 2.5 , "height": 3 },
           { "radius": 12.5 , "height": 10 }
+        ]
       },
         "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/circle-area.md"
@@ -313,6 +314,7 @@
         "examples": [
           { "radius": 3.5 , "height": 2 },
           { "radius": 13.5 , "height": 9 }
+        ]
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/sphere-volume.md",
@@ -344,6 +346,7 @@
         "examples": [
           { "radius": 3.5 , "height": 2 },
           { "radius": 13.5 , "height": 19 }
+        ]
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/cone-volume.md",
@@ -382,7 +385,8 @@
         "examples": [
           { "sideCount": 5 , "baseEdgeLength": 2.5 , "height": 15 },
           { "sideCount": 7 , "baseEdgeLength": 12.5 , "height": 25 }
-      },
+        ]
+        },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/pyramid-volume.md",
     "relatedUrls": [
@@ -426,7 +430,8 @@
         "examples": [
           { "sideCount": 5 , "baseEdgeLength": 2.5 , "topEdgeLength": 2 , "height": 15 },
           { "sideCount": 8 , "baseEdgeLength": 7.5 , "topEdgeLength": 5 , "height": 12 }
-          },
+        ]
+      },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/pyramid-volume.md",
     "relatedUrls": [
@@ -465,6 +470,7 @@
         "examples": [
           { "baseRadius": 5 , "topRadius": 2.5 , "height": 15 },
           { "baseRadius": 7 , "topRadius": 5 , "height": 15.6 }
+        ]
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/cone-volume.md",
