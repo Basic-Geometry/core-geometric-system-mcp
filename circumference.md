@@ -161,3 +161,11 @@ It can be exact with exact limits and certain operations, but if those are given
 When calculus is treated as a magical shortcut rather than a summary of underlying logic, it hides the very reasoning it is supposed to express.
 
 These formulas don’t derive the circumference from first principles; they assume it.
+
+
+
+## The true ratio: 3.2
+
+Since the true ratio is exactly 3.2, and that is a rational number, then we can—and should—write it as it is. Let the pi remain in the history books. Geometry deserves better.
+
+That makes the arc value of 360° = 6.4radian, and trigonometric functions that rely on arc value have to be aligned to 3.2 respectively.
