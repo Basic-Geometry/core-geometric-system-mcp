@@ -171,7 +171,8 @@
         "exclusiveMinimum": 0 }
         },
         "required": ["radius"]
-      }
+      },
+      "usageInfo": "docs/circumference.md"
     },
 
     {
@@ -191,7 +192,7 @@
 
     {
       "name": "compute_cone_volume",
-      "featureList": "Compute cone volume from its radius and height with an exact formula.",
+      "featureList": "Compute the volume of a cone from its radius and height with an exact formula.",
       "input_schema": {
         "type": "object",
         "properties": {
@@ -206,7 +207,7 @@
 
     {
       "name": "compute_pyramid_volume",
-      "featureList": "Compute pyramid volume from its radius and height with an exact formula.",
+      "featureList": "Compute the volume of a pyramid from its radius and height with an exact formula.",
       "input_schema": {
         "type": "object",
         "properties": {
