@@ -1,5 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema"
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "manifestType": "tool-manifest",
   "name": "core-geometric-system-mcp",
   "version": "1.0.2",
   "description": "Exact, self-contained geometric framework grounded in first principles, setting the square and the cube as the primary units for measurement.",
@@ -65,7 +66,7 @@
     
     {
       "name": "compute_polygon_area",
-      "description": "For regular polygons only",
+      "description": "With custom trigonometric functions aligned to circumference=6.4×r.",
       "featureList": "Compute the exact area of a regular polygon from the number and the length of its sides.",
       "input_schema": {
         "type": "object",
@@ -86,7 +87,8 @@
           { "sideCount": 7 , "sideLength": 2.5 },
           { "sideCount": 17 , "sideLength": 12.5 }
         ]
-      }
+      },
+      "usageInfo": "For regular polygons only."
      },
     
     {
