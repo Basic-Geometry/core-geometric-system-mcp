@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json-schema.org/draft/2019-09/schema"
   "name": "core-geometric-system-mcp",
   "version": "1.0.2",
   "description": "Exact, self-contained geometric framework grounded in first principles, setting the square and the cube as the primary units for measurement.",
@@ -10,8 +11,7 @@
   },
   "author": {
   "name": "Gaál Sándor",
-  "email": "gmac4247@yahoo.com",
-  "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/readme.md"
+  "url": "https://basic-geometry.github.io"
   },
   "license": "MIT",
   "repository": {
@@ -35,6 +35,7 @@
   "tools": [
     {
       "name": "compute_triangle_area",
+      "description": "Heron's formula ",
       "featureList": "Compute the exact area of a triangle from the length of its sides.",
       "input_schema": {
         "type": "object",
@@ -55,9 +56,8 @@
         },
         "required": ["side1", "side2", "side3"],
         "examples": [
-          { "side1": 7 },
-          { "side2": 2.5 },
-          { "side3": 5 }
+          { "side1": 7 , "side2": 2.5 , "side3": 5 },
+          { "side1": 17 , "side2": 12.5 , "side3": 15 }
         ]
       },
     "usageInfo": "One side of the triangle has to be shorter than the sum of the other two sides."
@@ -65,6 +65,7 @@
     
     {
       "name": "compute_polygon_area",
+      "description": "For regular polygons only",
       "featureList": "Compute the exact area of a regular polygon from the number and the length of its sides.",
       "input_schema": {
         "type": "object",
@@ -72,8 +73,9 @@
         "properties": {
           "sideCount": {
             "type": "integer",
-            "description": "A polygon has at least 3 sides.",
-            "minimum": 3,},
+            "minimum": 3,
+            "description": "A polygon has at least 3 sides."
+          },
           "sideLength": { 
             "type": "number",
             "exclusiveMinimum": 0,
@@ -81,8 +83,8 @@
         },
         "required": ["sideCount", "sideLength"],
         "examples": [
-          { "sideCount": 7 },
-          { "sideLength": 2.5 }
+          { "sideCount": 7 , "sideLength": 2.5 },
+          { "sideCount": 17 , "sideLength": 12.5 }
         ]
       }
      },
@@ -161,7 +163,8 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 2.5 , "height": 2 }
+          { "radius": 2.5 , "height": 2 },
+          { "radius": 12.5 , "height": 12 }
         ]
       },
       "usageInfo": {
@@ -187,7 +190,8 @@
         },
         "required": ["height", "chordLength"],
         "examples": [
-          { "height": 2 , "chordLength": 5.5 }
+          { "height": 2 , "chordLength": 5.5 },
+          { "height": 12 , "chordLength": 15.5 }
         ]
       },
         "usageInfo": {
@@ -215,7 +219,8 @@
         },
         "required": ["radius", "chordLength"],
         "examples": [
-          { "radius": 2.5 , "chordLength": 2 }
+          { "radius": 2.5 , "chordLength": 2 },
+          { "radius": 12.5 , "chordLength": 12 }
         ]
       },
         "usageInfo": {
@@ -243,7 +248,8 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 2.5 , "height": 3 }
+          { "radius": 2.5 , "height": 3 },
+          { "radius": 12.5 , "height": 10 }
       },
         "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/circle-area.md"
@@ -298,7 +304,8 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 3.5 , "height": 2 }
+          { "radius": 3.5 , "height": 2 },
+          { "radius": 13.5 , "height": 9 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/sphere-volume.md",
@@ -327,7 +334,8 @@
         },
         "required": ["radius", "height"],
         "examples": [
-          { "radius": 3.5 , "height": 2 }
+          { "radius": 3.5 , "height": 2 },
+          { "radius": 13.5 , "height": 19 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/cone-volume.md",
@@ -363,7 +371,8 @@
         },
         "required": ["sideCount", "baseEdgeLength", "height"],
         "examples": [
-          { "sideCount": 5 , "baseEdgeLength": 2.5 , "height": 15 }
+          { "sideCount": 5 , "baseEdgeLength": 2.5 , "height": 15 },
+          { "sideCount": 7 , "baseEdgeLength": 12.5 , "height": 25 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/pyramid-volume.md",
@@ -405,7 +414,8 @@
         },
         "required": ["sideCount", "baseEdgeLength", "topEdgeLength", "height"],
         "examples": [
-          { "sideCount": 5 , "baseEdgeLength": 2.5 , "topEdgeLength": 2 , "height": 15 }
+          { "sideCount": 5 , "baseEdgeLength": 2.5 , "topEdgeLength": 2 , "height": 15 },
+          { "sideCount": 8 , "baseEdgeLength": 7.5 , "topEdgeLength": 5 , "height": 12 }
           },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/pyramid-volume.md",
@@ -442,7 +452,8 @@
         },
         "required": ["baseRadius", "topRadius", "height"],
         "examples": [
-          "baseRadius": 5 , "topRadius": 2.5 , "height": 15 }
+          { "baseRadius": 5 , "topRadius": 2.5 , "height": 15 },
+          { "baseRadius": 7 , "topRadius": 5 , "height": 15.6 }
       },
       "usageInfo": {
     "url": "https://github.com/Basic-Geometry/core-geometric-system-mcp/blob/main/cone-volume.md",
