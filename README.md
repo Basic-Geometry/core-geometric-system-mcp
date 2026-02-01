@@ -26,8 +26,8 @@ Solid geometry
   — derived from exact sphere-cube construction—not the traditional "4r³pi/3" nonsense.
 - compute_spherical_cap_volume
 - [compute_cone_volume](./cone-volume.md)
-  — derived from exact cone-sphere construction—not the traditional "base×height/3" approximate.
-- compute_pyramid_volume
+  — derived from exact cone-[sphere](./sphere-volume.md) construction—not the traditional "base×height/3" approximate.
+- [compute_pyramid_volume](./pyramid-volume.md) — using the exact 1/√8 coefficient of the [cone](./cone-volume.md) instead of the traditional 1/3 approximate 
 - compute_frustum_pyramid_volume
 - compute_frustum_cone_volume
 - compute_tetrahedron_volume
