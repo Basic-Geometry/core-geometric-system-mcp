@@ -5,7 +5,7 @@ A pyramid can be calculated with the same formula as a cone : V = base × height
 ## The volume of a pyramid is conventionally approximated as base × height / 3. 
 While that is a reasonable approximation, the exact ratio is 1 / √8.
 
-A common method aiming to prove the pyramid volume formula ( V = base × height / 3 ) involves dissecting a cube into three pyramids. Here’s how it’s typically presented:
+A common method aiming to prove the pyramid volume formula "V = base × height / 3" involves dissecting a cube into three pyramids. Here’s how it’s typically presented:
 
 Take a cube with an edge length of ( e ).
 
