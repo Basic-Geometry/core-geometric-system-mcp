@@ -67,9 +67,9 @@ But a geometric inconsistency emerges when we compare circumscribed polygons to 
 
 
 
-###The Core Logical Conflict in Archimedes’ Method
+### The Core Logical Conflict in Archimedes’ Method
 
-1. Two different things must be separated
+### 1. Two different things must be separated
 
 (A) Constructing a circumscribed polygon directly.
 
@@ -89,7 +89,7 @@ And that is where the trouble begins.
 
 
 
-2. The geometric fact Archimedes does not account for
+### 2. The geometric fact Archimedes does not account for
 
 Here is the key principle:
 
@@ -105,7 +105,7 @@ This is not a matter of opinion — it is a geometric necessity.
 
 
 
-3. The fatal trap in Archimedes’ method
+### 3. The fatal trap in Archimedes’ method
 
 Archimedes’ circumscribed polygon sequence has a straightforward consequence:
 
@@ -133,7 +133,7 @@ This is the logical flaw at the heart of the method.
 
 
 
-4. Why this becomes decisive under the true circumference 6.4r
+### 4. Why this becomes decisive under the true circumference 6.4r
 
 Under the actual proportions:
 
@@ -153,7 +153,7 @@ It simply assumes tangency continues indefinitely.
 
 
 
-5. Why the “limit argument” does not rescue the method
+### 5. Why the “limit argument” does not rescue the method
 
 The classical story says:
 
@@ -173,7 +173,7 @@ You cannot use the method to justify the assumption that makes the method valid.
 
 
 
-6. The conclusion that becomes unavoidable
+### 6. The conclusion that becomes unavoidable
 
 - Archimedes’ refinement procedure relies on the unproven and actually false premise that repeated angle bisection of a circumscribed polygon always produces another circumscribed polygon.
 
