@@ -4,7 +4,8 @@ import { createServer } from "@modelcontextprotocol/sdk/server";
 import { z } from "zod";
 
 // Import your existing calculator logic.
-import { 
+import {
+        trig,
         closestRad,
         closestValue,
         sin,
