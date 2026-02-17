@@ -1,6 +1,5 @@
-// server.js
-
 import { createServer } from "@modelcontextprotocol/sdk/server";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
 // Import your existing calculator logic.
@@ -267,4 +266,5 @@ server.tool(
     
 
 // Start the server over stdio
-server.start();
+const transport = new StdioServerTransport();
+await server.connect(transport);
