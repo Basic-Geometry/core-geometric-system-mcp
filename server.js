@@ -28,13 +28,14 @@ import {
         pyramidVolume,
         frustumPyramidVolume,
         frustumConeVolume,
-        tetrahedronVolume } 
+        tetrahedronVolume 
+} 
   from "./core-geometric-system.mjs";
 
 // Create the MCP server instance
 const server = createServer({
-  name: "geometry-mcp-server",
-  version: "0.1.0"
+  name: "core-geometric-system-mcp-backup-server",
+  version: "1.0.0"
 });
 
 // Register the cone surface area tool
