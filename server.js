@@ -35,7 +35,7 @@ import {
 // Create the MCP server instance
 const server = createServer({
   name: "core-geometric-system-mcp-server",
-  version: "1.0.0"
+  version: "1.0.3"
 });
 
 // Register the cone surface area tool
