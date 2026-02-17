@@ -2,7 +2,7 @@ import { createServer } from "@modelcontextprotocol/sdk/server";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 
-// Import your existing calculator logic.
+// Import the existing calculator logic.
 import {
         trig,
         closestRad,
