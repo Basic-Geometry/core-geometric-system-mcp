@@ -34,7 +34,7 @@ import {
 
 // Create the MCP server instance
 const server = createServer({
-  name: "core-geometric-system-mcp-backup-server",
+  name: "core-geometric-system-mcp-server",
   version: "1.0.0"
 });
 
