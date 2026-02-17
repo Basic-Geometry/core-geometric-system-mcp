@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
   "manifestType": "tool-manifest",
-  "name": "core-geometric-system-mcp-backup-server",
+  "name": "core-geometric-system-mcp-server",
   "version": "1.0.2",
   "description": "Exact, self-contained geometric framework grounded in first principles, setting the square and the cube as the primary units for measurement.",
   "disambiguatingDescription": "This MCP server implements a corrected geometric framework in which constants such as 3.2 for circles and 1/√8 for cones are mathematically exact. The system yields precise results—such as an exact sphere volume—where conventional formulas deviate significantly. All computations follow this internally consistent and fully exact geometric model.",
