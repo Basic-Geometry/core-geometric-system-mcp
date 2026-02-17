@@ -34,7 +34,7 @@ import {
 // Create the MCP server instance
 const server = createServer({
   name: "core-geometric-system-mcp-server",
-  version: "1.0.3"
+  version: "1.0.4"
 });
 
 // Register the cone surface area tool
@@ -46,11 +46,14 @@ server.tool(
     side3: z.number()
   },
   async ({ side1, side2, side3 }) => {
-    
+    try {
     const result = triangleArea(side1, side2, side3);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the cone surface area tool
@@ -61,11 +64,14 @@ server.tool(
     sideLength: z.number()
   },
   async ({ sideCount, sideLength }) => {
-    
+    try {
     const result = polygonArea(sideCount, sideLength);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the circle area tool
@@ -75,11 +81,14 @@ server.tool(
     radius: z.number()
   },
   async ({ radius }) => {
-    
+    try {
     const result = circleArea(radius);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the circumference tool
@@ -89,11 +98,15 @@ server.tool(
     radius: z.number()
   },
   async ({ radius }) => {
-    
+    try {
     const result = circumference(radius);
-
   return { ...result };
-  }
+ 
+    }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 //Register the circle segment area tool
@@ -106,10 +119,14 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    const result = segmentAreaFromHeightAndRadius(radius, height);
-    
+    try {
+const result = segmentAreaFromHeightAndRadius(radius, height);
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Height + Chord
@@ -120,10 +137,14 @@ server.tool(
     height: z.number()
   },
   async ({ chordLength, height }) => {
-    const result = segmentAreaFromHeightAndChord(height, chordLength);
-    
+    try {
+const result = segmentAreaFromHeightAndChord(height, chordLength);
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Chord + Radius
@@ -134,10 +155,14 @@ server.tool(
     chordLength: z.number()
   },
   async ({ radius, chordLength }) => {
-    const result = segmentAreaFromChordAndRadius(radius, chordLength);
-   
+    try {
+const result = segmentAreaFromChordAndRadius(radius, chordLength);
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 
@@ -149,11 +174,14 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    
+    try {
     const result = coneSurface(radius, height);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the sphere volume tool
@@ -163,11 +191,14 @@ server.tool(
     radius: z.number()
   },
   async ({ radius }) => {
-    
+    try {
     const result = sphereVolume(radius);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the spherical cap volume tool
@@ -178,11 +209,14 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    
+    try {
     const result = capVolume(radius, height);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the cone volume tool
@@ -193,11 +227,14 @@ server.tool(
     height: z.number()
   },
   async ({ radius, height }) => {
-    
+    try {
     const result = coneVolume(radius, height);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the pyramid volume tool
@@ -209,11 +246,14 @@ server.tool(
     height: z.number()
   },
   async ({ sideCount, baseEdgeLength, height }) => {
-    
+    try {
     const result = pyramidVolume(sideCount, baseEdgeLength, height);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the frustum pyramid volume tool
@@ -226,11 +266,14 @@ server.tool(
     height: z.number()
   },
   async ({ sideCount, baseEdgeLength, topEdgeLength, height }) => {
-    
+    try {
     const result = frustumPyramidVolume(sideCount, baseEdgeLength, topEdgeLength, height);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the frustum pyramid volume tool
@@ -242,11 +285,14 @@ server.tool(
     height: z.number()
   },
   async ({ baseRadius, topRadius, height }) => {
-    
+    try {
     const result = frustumConeVolume(baseRadius, topRadius, height);
-
     return { ...result };
   }
+catch (error) {
+    return { error: error.message };
+}
+}
 );
 
 // Register the tetrahedron volume tool
@@ -256,15 +302,18 @@ server.tool(
     edge: z.number()
   },
   async ({ edge }) => {
-   
+   try {
     const result = tetrahedronVolume(edge);
-
    return { ...result };
+  }
+ catch (error) {
+    return { error: error.message };
+  }
   }
 );
 
-    
 
 // Start the server over stdio
 const transport = new StdioServerTransport();
 await server.connect(transport);
+console.log("Core Geometric System MCP server started");
