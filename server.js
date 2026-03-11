@@ -22,7 +22,6 @@ import {
         segmentAreaFromChordAndRadius,
         coneSurface, 
         sphereVolume, 
-        capVolume,
         coneVolume,
         pyramidVolume,
         frustumPyramidVolume,
@@ -308,38 +307,6 @@ server.tool(
         {
           type: "text",
           text: `Exact sphere volume for radius ${radius}: ${result}`
-        }
-      ]
-    };
-  }
-catch (_) {
-      return {
-        content: [
-          {
-            type: "text",
-            text: "Error"
-          }
-        ]
-      };
-    }
-  }
-);
-
-// 10. Spherical Cap Volume
-server.tool(
-  "compute_spherical_cap_volume",
-  {
-    radius: z.number().positive(),
-    height: z.number().positive()
-  },
-  async ({ radius, height }) => {
-    try {
-	const result = capVolume(radius, height);
-    return {
-      content: [
-        {
-          type: "text",
-          text: `Spherical cap volume (r=${radius}, h=${height}): ${result}`
         }
       ]
     };
